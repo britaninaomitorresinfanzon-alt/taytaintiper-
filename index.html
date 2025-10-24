@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Página con Fondo Carrusel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* ===== FUENTES PERSONALIZADAS ===== */
+    @font-face {
+      font-family: 'Adelia';
+      src: url('fuentes/Adelia.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'Scriptorial';
+      src: url('fuentes/Scriptorial.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'TheRustic';
+      src: url('fuentes/TheRustic-Demo.otf') format('opentype');
+    }
+
+    /* ===== ESTILOS GENERALES ===== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+    }
+
+    /* ===== CARRUSEL DE FONDO ===== */
+    .fondo-carrusel {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background-size: cover;
+      background-position: center;
+      transition: background-image 1s ease-in-out;
+    }
+
+    /* ===== CONTENEDOR PRINCIPAL ===== */
+    .contenedor {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6); /* oscurece el fondo */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ===== LOGO ===== */
+    .logo2 {
+      height: 160px;
+      margin-bottom: 100px;
+    }
+
+    /* ===== BOTONES ===== */
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      margin-top: 60px;
+    }
+
+    .boton-cuadrado {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 250px;
+      height: 90px;
+      background-color: transparent;
+      border: 2px solid white;
+      color: white;
+      font-size: 18px;
+      font-family: 'TheRustic', Arial, sans-serif;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .boton-cuadrado:hover {
+      background-color: white;
+      color: black;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FONDO CARRUSEL -->
+  <div class="fondo-carrusel" id="fondo"></div>
+
+  <div class="contenedor">
+    <img src="imagenes/logo2.png" alt="Logo" class="logo2">
+
+    <div class="botones">
+      <a href="shop.html" class="boton-cuadrado">EXTRACTS</a>
+      <a href="shop2.html" class="boton-cuadrado">OILS & BALSAMS</a>
+      <a href="shop3.html" class="boton-cuadrado">POWDERS</a>
+      <a href="shop4.html" class="boton-cuadrado">DRIED HERBS</a>
+    </div>
+  </div>
+
+  <script>
+    // ===== CARRUSEL DE IMÁGENES =====
+    const imagenes = [
+      'imagenes/fondo400.jpg',
+      'imagenes/fondo1000.jpg',
+      'imagenes/fondo2000.jpg',
+      'imagenes/fondo3000.jpg',
+	'imagenes/fondo4000.jpg',
+
+    ];
+
+    let indice = 0;
+    const fondo = document.getElementById('fondo');
+
+    function cambiarFondo() {
+      fondo.style.backgroundImage = `url('${imagenes[indice]}')`;
+      indice = (indice + 1) % imagenes.length;
+    }
+
+    // Inicia y cambia cada 5 segundos
+    cambiarFondo();
+    setInterval(cambiarFondo, 5000);
+  </script>
+
+</body>
+</html>

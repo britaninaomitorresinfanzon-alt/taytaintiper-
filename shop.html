@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda de Productos</title>
+  <style>
+    /* ===== ESTILOS GENERALES ===== */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('imagenes/fondo500.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden; /* evita scroll innecesario */
+    }
+
+    /* ===== LOGO ===== */
+    .logo2 {
+      position: absolute; /* 💥 flotando sobre el fondo oscuro */
+      top: 40px;           /* posición superior */
+      left: 50%;           /* centrado horizontalmente */
+      transform: translateX(-50%);
+      height: 100px;
+      z-index: 2;          /* siempre encima del fondo */
+    }
+
+    /* ===== CONTENEDOR PRINCIPAL ===== */
+    .contenedor-principal {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh; /* 💥 cubre toda la pantalla */
+      background-color: rgba(0, 0, 0, 0.6); /* fondo oscuro translúcido */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ===== PRODUCTOS ===== */
+    .productos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      padding-top: 120px; /* deja espacio visual debajo del logo */
+    }
+
+    .product {
+    background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+
+      border-radius: 8px;
+      padding: 20px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: white;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+    }
+
+    .product img {
+      width: 100%;
+      height: 180px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+
+    .product h2 {
+      font-size: 18px;
+      color: white
+;
+      margin: 10px 0 5px;
+    }
+
+    .price {
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔹 Logo encima del fondo oscuro -->
+  <img src="imagenes/logo2.png" alt="Logo" class="logo2" />
+
+  <!-- 🔹 Fondo oscuro cubre toda la pantalla -->
+  <div class="contenedor-principal">
+    <div class="productos" id="productos"></div>
+  </div>
+
+  <script>
+    const producto = {
+      nombre: "Graviola Leaf Extract (Annona muricata)",
+      enlace: "descripcion.html"
+    };
+
+    const contenedor = document.getElementById('productos');
+    contenedor.innerHTML = `
+      <a href="${producto.enlace}" class="product">
+
+        <h2>${producto.nombre}</h2>
+      
+      </a>
+    `;
+  </script>
+
+</body>
+</html>

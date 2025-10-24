@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda de Productos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-image: Url('imagenes/textura10.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100px;
+      padding: 0 20px;
+      display: flex;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      width: 100%;
+    }
+
+    .logo2 {
+      height: 65px;
+    }
+
+    .botones {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .botones button {
+      padding: 10px 15px;
+      background-color: transparent;
+      color: #F5F5F5;
+      border: none;
+      border-top: 2px solid #F5F5F5;
+      border-bottom: 2px solid #F5F5F5;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: "Skinny Jeans Solid", Arial, sans-serif;
+      transition: background-color 0.3s;
+    }
+
+    .botones button:hover {
+      background-color: #F5F5F5;
+      color: white;
+    }
+
+    .secciones {
+      margin-top: 110px;
+      background-color: #f2f2f2;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .secciones button {
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid #163E35;
+      background-color: white;
+      color: #163E35;
+      transition: all 0.3s;
+    }
+
+    .secciones button:hover {
+      background-color: #163E35;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      background-image: url(imagenes/shopfondo.jpg);
+    }
+
+    .product {
+      background-color: #f4f4f4;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin: 15px;
+      padding: 20px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      font-family: "Skinny Jeans Solid";
+    }
+
+    .product img {
+      width: 100%;
+      height: auto;
+      max-height: 180px;
+      object-fit: contain;
+    }
+
+    .price {
+      color: #27ae60;
+      font-size: 1.2em;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-content">
+      <img src="imagenes/logo2.png" alt="Logo2" class="logo2" />
+      <div class="botones">
+        <a href="taytanuevo.html"><button>INICIO</button></a>
+        <a href="sobrenosotros.html"><button>SOBRE NOSOTROS</button></a>
+        <a href="shop.html"><button>NATURAL INGREDIENTS B2B</button></a>
+              <a href="b2c.html"><button>SHAMANIC WELLBEING B2C</button></a>
+
+        <a href="contacto.html"><button>CONTACTO</button></a>
+        
+
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIONES -->
+  <div class="secciones">
+    <button onclick="mostrarSeccion('limpieza')">Palo santo & Resins</button>
+    <button onclick="mostrarSeccion('aromaterapia')">Energy Stones</button>
+    <button onclick="mostrarSeccion('cristales')">Handcrafted Jewerly</button>
+  </div>
+
+  <!-- PRODUCTOS -->
+  <div class="container" id="productos">
+    <!-- Se llena dinámicamente -->
+  </div>
+
+  <script>
+    const productosPorSeccion = {
+      limpieza: [
+        { nombre: "Palo Santo Sticks", precio: "$10.00", imagen: "imagenes/palitosanto.jpg" },
+        { nombre: "Stones", precio: "$12.00", imagen: "imagenes/palitosanto.jpg" },
+        { nombre: "Palo Santo Tears", precio: "$14.00", imagen: "imagenes/palitosanto.jpg" },
+        { nombre: "Copal Tears", precio: "$16.00", imagen: "imagenes/palitosanto.jpg" },
+        { nombre: "Handcrafted Bracelets", precio: "$18.00", imagen: "imagenes/palitosanto.jpg" },
+        { nombre: "Incenses", precio: "$20.00", imagen: "imagenes/palitosanto.jpg" }
+      ],
+
+      aromaterapia: Array.from({length: 10}, (_, i) => ({
+        nombre: `Aceite ${i + 1}`,
+        precio: `$${(8 + i).toFixed(2)}`,
+        imagen: "imagenes/lavanda.jpg"
+      })),
+      cristales: Array.from({length: 10}, (_, i) => ({
+        nombre: `Cristal ${i + 1}`,
+        precio: `$${(12 + i).toFixed(2)}`,
+        imagen: "imagenes/cristal.jpg"
+      })),
+      rituales: Array.from({length: 10}, (_, i) => ({
+        nombre: `Ritual ${i + 1}`,
+        precio: `$${(15 + i).toFixed(2)}`,
+        imagen: "imagenes/saumerio.jpg"
+      })),
+      velas: Array.from({length: 10}, (_, i) => ({
+        nombre: `Vela ${i + 1}`,
+        precio: `$${(7 + i).toFixed(2)}`,
+        imagen: "imagenes/vela.jpg"
+      })),
+      kits: Array.from({length: 10}, (_, i) => ({
+        nombre: `Kit ${i + 1}`,
+        precio: `$${(20 + i).toFixed(2)}`,
+        imagen: "imagenes/kit.jpg"
+      }))
+    };
+
+    function mostrarSeccion(seccion) {
+      const contenedor = document.getElementById('productos');
+      contenedor.innerHTML = '';
+
+      productosPorSeccion[seccion].forEach(prod => {
+        contenedor.innerHTML += `
+          <div class="product">
+            <img src="${prod.imagen}" alt="${prod.nombre}">
+            <h2>${prod.nombre}</h2>
+            <p class="price">${prod.precio}</p>
+          </div>
+        `;
+      });
+    }
+
+    mostrarSeccion('limpieza');
+  </script>
+
+</body>
+</html>
