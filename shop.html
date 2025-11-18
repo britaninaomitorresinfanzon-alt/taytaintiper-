@@ -14,17 +14,38 @@
       background-position: center;
       height: 100vh;
       width: 100vw;
-      overflow: hidden; /* evita scroll innecesario */
+      overflow: hidden;
+    }
+
+    /* ===== ICONOS SUPERIORES DERECHA ===== */
+    .iconos-superiores {
+      position: absolute;
+      top: 20px;
+      right: 20px; /* ← Ambos a la derecha */
+      display: flex;
+      gap: 15px;   /* espacio entre íconos */
+      z-index: 3;
+    }
+
+    .iconos-superiores img {
+      width: 45px;
+      height: 45px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .iconos-superiores img:hover {
+      transform: scale(1.1);
     }
 
     /* ===== LOGO ===== */
     .logo2 {
-      position: absolute; /* 💥 flotando sobre el fondo oscuro */
-      top: 40px;           /* posición superior */
-      left: 50%;           /* centrado horizontalmente */
+      position: absolute;
+      top: 40px;
+      left: 50%;
       transform: translateX(-50%);
       height: 100px;
-      z-index: 2;          /* siempre encima del fondo */
+      z-index: 2;
     }
 
     /* ===== CONTENEDOR PRINCIPAL ===== */
@@ -33,8 +54,8 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100vh; /* 💥 cubre toda la pantalla */
-      background-color: rgba(0, 0, 0, 0.6); /* fondo oscuro translúcido */
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -47,13 +68,12 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 30px;
-      padding-top: 120px; /* deja espacio visual debajo del logo */
+      padding-top: 120px;
     }
 
     .product {
-    background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255,255,255,0.2);
-
       border-radius: 8px;
       padding: 20px;
       width: 250px;
@@ -70,33 +90,31 @@
       box-shadow: 0 6px 10px rgba(0,0,0,0.2);
     }
 
-    .product img {
-      width: 100%;
-      height: 180px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
-
     .product h2 {
       font-size: 18px;
-      color: white
-;
+      color: white;
       margin: 10px 0 5px;
-    }
-
-    .price {
-      color: #333;
-      font-weight: bold;
-      font-size: 16px;
     }
   </style>
 </head>
+
 <body>
 
-  <!-- 🔹 Logo encima del fondo oscuro -->
+  <!-- 🔹 ICONOS SUPERIORES DERECHA -->
+  <div class="iconos-superiores">
+    <a href="index.html">
+      <img src="imagenes/Home.jpg" alt="Home">
+    </a>
+
+    <a href="carrito.html">
+      <img src="imagenes/Carrito.png" alt="Carrito">
+    </a>
+  </div>
+
+  <!-- 🔹 LOGO -->
   <img src="imagenes/logo2.png" alt="Logo" class="logo2" />
 
-  <!-- 🔹 Fondo oscuro cubre toda la pantalla -->
+  <!-- 🔹 FONDO OSCURO -->
   <div class="contenedor-principal">
     <div class="productos" id="productos"></div>
   </div>
@@ -108,15 +126,13 @@
     };
 
     const contenedor = document.getElementById('productos');
+
     contenedor.innerHTML = `
       <a href="${producto.enlace}" class="product">
-
         <h2>${producto.nombre}</h2>
-      
       </a>
     `;
   </script>
 
 </body>
 </html>
-
