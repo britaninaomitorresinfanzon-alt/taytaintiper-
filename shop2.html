@@ -3,21 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Oils & Balsams</title>
+  <title>Tienda de Productos</title>
   <style>
-    /* ===== FONDO GENERAL ===== */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-image: url('imagenes/fondo700.jpg');
       background-size: cover;
       background-position: center;
-      background-attachment: fixed; /* Fondo fijo */
+      background-attachment: fixed;
       color: white;
       min-height: 100vh;
     }
 
-    /* ===== CONTENEDOR PRINCIPAL ===== */
     .contenedor-principal {
       background-color: rgba(0, 0, 0, 0.6);
       min-height: 100vh;
@@ -25,25 +23,22 @@
       box-sizing: border-box;
     }
 
-    /* ===== LOGO ===== */
     .logo2 {
       display: block;
-      margin: 0 auto 50px auto; /* Centrado y separación inferior */
+      margin: 0 auto 50px auto;
       height: 100px;
       z-index: 2;
     }
 
-    /* ===== PRODUCTOS ===== */
     .productos {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 💥 3 columnas */
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
       justify-items: center;
       max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* ===== PRODUCTO ===== */
     .product {
       display: block;
       background-color: rgba(255, 255, 255, 0.1);
@@ -55,8 +50,8 @@
       text-align: center;
       box-shadow: 0 3px 6px rgba(0,0,0,0.2);
       transition: transform 0.3s, box-shadow 0.3s;
-      text-decoration: none; /* quita el subrayado del enlace */
-      color: white; /* color del texto */
+      text-decoration: none;
+      color: white;
       cursor: pointer;
     }
 
@@ -70,7 +65,6 @@
       margin: 0;
     }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 900px) {
       .productos {
         grid-template-columns: repeat(2, 1fr);
@@ -82,16 +76,40 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ICONOS SUPERIORES */
+    .top-icons {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 15px;
+      z-index: 2000;
+    }
+
+    .top-icons img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.2s;
+    }
+
+    .top-icons img:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
 
-  <!-- 🔹 Contenedor general -->
-  <div class="contenedor-principal">
-    <!-- 🔹 Logo -->
-    <img src="imagenes/logo2.png" alt="Logo" class="logo2" />
+  <!-- ICONOS EN LA PARTE SUPERIOR DERECHA -->
+  <div class="top-icons">
+    <a href="index.html"><img src="imagenes/Home.jpg" alt="Home"></a>
+    <a href="carrito.html"><img src="imagenes/Carrito.png" alt="Carrito"></a>
+  </div>
 
-    <!-- 🔹 Productos -->
+  <div class="contenedor-principal">
+    <img src="imagenes/logo2.png" alt="Logo" class="logo2" />
     <div class="productos" id="productos"></div>
   </div>
 
@@ -120,5 +138,3 @@
 
 </body>
 </html>
-
-
