@@ -3,95 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dried herbs</title>
+  <title>Tienda de Productos</title>
   <style>
-    /* Iconos superiores */
-    .top-icons {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      display: flex;
-      gap: 15px;
-      z-index: 9999;
-    }
-    .top-icons img {
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: transform 0.2s;
-    }
-    .top-icons img:hover {
-      transform: scale(1.1);
-    }
-
-    /* Fondo general con imagen */
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-image: url('imagenes/fondo900.jpg');
+      background-image: url('imagenes/fondo700.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
-      position: relative;
+      color: white;
       min-height: 100vh;
-      color: #fff;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 0;
     }
 
     .contenedor-principal {
-      position: relative;
-      z-index: 1;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      text-align: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      padding: 60px 40px 80px;
+      box-sizing: border-box;
     }
 
     .logo2 {
       display: block;
-      height: 80px;
-      margin: 30px auto;
-      transition: transform 0.3s ease;
+      margin: 0 auto 50px auto;
+      height: 100px;
+      z-index: 2;
     }
 
     .productos {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      justify-content: center;
-      align-items: start;
+      gap: 30px;
+      justify-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .product {
+      display: block;
       background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 10px;
-      padding: 30px 20px;
+      padding: 40px 20px;
+      width: 100%;
+      max-width: 280px;
       text-align: center;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
-      transition: transform 0.3s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
     }
 
     .product:hover {
       transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.3);
     }
 
     .product h2 {
       font-size: 18px;
       margin: 0;
-      color: #fff;
     }
 
     @media (max-width: 900px) {
@@ -105,11 +76,33 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ICONOS SUPERIORES */
+    .top-icons {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 15px;
+      z-index: 2000;
+    }
+
+    .top-icons img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.2s;
+    }
+
+    .top-icons img:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
 
-  <!-- Iconos superiores → Home y Carrito -->
+  <!-- ICONOS EN LA PARTE SUPERIOR DERECHA -->
   <div class="top-icons">
     <a href="index.html"><img src="imagenes/Home.jpg" alt="Home"></a>
     <a href="carrito.html"><img src="imagenes/Carrito.png" alt="Carrito"></a>
@@ -117,26 +110,25 @@
 
   <div class="contenedor-principal">
     <img src="imagenes/logo2.png" alt="Logo" class="logo2" />
-
     <div class="productos" id="productos"></div>
   </div>
 
   <script>
-    const productos = [
-      { nombre: "Chancapiedra Dried (Phyllantus niruri)" },
-      { nombre: "Valerian Root Dried (Valeriana officinalis)" },
-      { nombre: "Pink Pepper Seed Dried (Schinus molle)" },
-      { nombre: "Papaya Seed Dried (Carica papaya)" },
-      { nombre: "Andean Mint Leaf Dried (Minthostachys mollis)" },
-      { nombre: "Senna Leaves Dried (Senna alexandrina)" }
+  const productos = [
+      { nombre: "Chancapiedra Dried (Phyllantus niruri)", enlace: "ChancapiedraDried.html" },
+      { nombre: "Valerian Root Dried (Valeriana officinalis)", enlace: "ValerianRootDried.html" },
+      { nombre: "Pink Pepper Seed Dried (Schinus molle)", enlace: "PinkPepperSeedDried.html" },
+      { nombre: "Papaya Seed Dried (Carica papaya)", enlace: "PapayaSeedDried.html" },
+      { nombre: "Andean Mint Leaf Dried (Minthostachys mollis)", enlace: "AndeanMintLeafDried.html" },
+      { nombre: "Senna Leaves Dried (Senna alexandrina)", enlace: "senna.html" }
     ];
 
     const contenedor = document.getElementById('productos');
-    productos.forEach(prod => {
+    productos.forEach(p => {
       contenedor.innerHTML += `
-        <div class="product">
-          <h2>${prod.nombre}</h2>
-        </div>
+        <a href="${p.enlace}" class="product">
+          <h2>${p.nombre}</h2>
+        </a>
       `;
     });
   </script>
