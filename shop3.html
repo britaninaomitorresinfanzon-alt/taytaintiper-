@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-image: url('imagenes/fondo900.jpg');
+      background-image: url('imagenes/fondo700.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -40,15 +40,18 @@
     }
 
     .product {
+      display: block;
       background-color: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255,255,255,0.2);
       border-radius: 10px;
-      padding: 20px;
+      padding: 40px 20px;
       width: 100%;
       max-width: 280px;
       text-align: center;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
       transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: white;
       cursor: pointer;
     }
 
@@ -57,22 +60,9 @@
       box-shadow: 0 6px 10px rgba(0,0,0,0.3);
     }
 
-    .product img {
-      width: 100%;
-      height: 180px;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
-
     .product h2 {
       font-size: 18px;
-      margin: 10px 0 5px;
-    }
-
-    .price {
-      color: #000;
-      font-weight: bold;
-      font-size: 16px;
+      margin: 0;
     }
 
     @media (max-width: 900px) {
@@ -125,30 +115,30 @@
 
   <script>
     const productos = [
-      { nombre: "Maca Root Powder (Lepidium meyenii)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Guayusa Leaf Powder (Ilex guayusa)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Acai Berry Powder (Euterpe olereace)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Garlic Powder (Allium sativum)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Ginger Powder (Zingiber officinale)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Arrowroot Powder (Maranta arundinacea)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Guanabana / Graviola Leaf Powder (Annona muricata)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Sacha Jergón Powder (Dracontium loretense)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Algarrobo Powder (Prosopis pallida)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Cat´s Claw Powder (Uncaria tomentosa)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Yacon Powder (Smallanthus sonchifolius)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Sweet Potato Powder (Ipomoea batatas)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Cacao Powder (Theobroma cacao)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" },
-      { nombre: "Huanarpo Macho (Jatropha macrantha)", precio: "$25.00", imagen: "imagenes/palitosanto.jpg" }
+      { nombre: "Maca Root Powder (Lepidium meyenii)", enlace: "MacaRootPowder.html" },
+      { nombre: "Guayusa Leaf Powder (Ilex guayusa)", enlace: "GuayusaLeafPowder.html" },
+      { nombre: "Acai Berry Powder (Euterpe olereace)", enlace: "AcaiBerryPowder.html" },
+      { nombre: "Garlic Powder (Allium sativum)", enlace: "GarlicPowder.html" },
+      { nombre: "Ginger Powder (Zingiber officinale)", enlace: "GingerPowder.html" },
+      { nombre: "Arrowroot Powder (Maranta arundinacea)", enlace: "ArrowrootPowder.html" },
+      { nombre: "Guanabana / Graviola Leaf Powder (Annona muricata)", enlace: "GraviolaLeafPowder.html" },
+      { nombre: "Sacha Jergón Powder (Dracontium loretense)", enlace: "SachaJergonPowder.html" },
+      { nombre: "Algarrobo Powder (Prosopis pallida)", enlace: "AlgarroboPowder.html" },
+      { nombre: "Cat´s Claw Powder (Uncaria tomentosa)", enlace: "CatsClawPowder.html" },
+      { nombre: "Yacon Powder (Smallanthus sonchifolius)", enlace: "YaconPowder.html" },
+      { nombre: "Sweet Potato Powder (Ipomoea batatas)", enlace: "SweetPotatoPowder.html" },
+      { nombre: "Cacao Powder (Theobroma cacao)", enlace: "CacaoPowder.html" },
+      { nombre: "Huanarpo Macho (Jatropha macrantha)", enlace: "HuanarpoMacho.html" },
     ];
 
+
     const contenedor = document.getElementById('productos');
-    productos.forEach(prod => {
+    productos.forEach(p => {
       contenedor.innerHTML += `
-        <div class="product">
-          <img src="${prod.imagen}" alt="${prod.nombre}">
-          <h2>${prod.nombre}</h2>
-          <p class="price">${prod.precio}</p>
-        </div>`;
+        <a href="${p.enlace}" class="product">
+          <h2>${p.nombre}</h2>
+        </a>
+      `;
     });
   </script>
 
