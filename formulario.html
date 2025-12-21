@@ -91,7 +91,7 @@
       border-radius: 6px;
       border: none;
       outline: none;
-      background-color: rgba(255,255,255,0.8);
+      background-color: rgba(255,255,255,0.85);
       font-size: 16px;
     }
 
@@ -131,35 +131,45 @@
 </head>
 <body>
 
-  <!-- ICONOS -->
-  <div class="icon-bar">
-    <a href="index.html"><img src="imagenes/Home.jpg" alt="Home"></a>
-    <a href="carrito.html"><img src="imagenes/Carrito.png" alt="Carrito"></a>
-  </div>
-
   <div class="contenedor-principal">
 
+    <!-- ICONOS -->
+    <div class="icon-bar">
+      <a href="index.html">
+        <img src="imagenes/home.jpg" alt="Home">
+      </a>
+      <a href="carrito.html">
+        <img src="imagenes/carrito.png" alt="Carrito">
+      </a>
+    </div>
+
     <!-- LOGO -->
-    <img src="imagenes/logo2.png" alt="Logo" class="logo2" />
+    <img src="imagenes/logo2.png" alt="Logo Tayta Inti" class="logo2" />
 
     <!-- FORMULARIO -->
-    <form class="formulario" action="mailto:anoriega@taytainti.com.pe" method="POST" enctype="text/plain">
+    <form class="formulario"
+          action="https://formspree.io/f/xbdrkjjd"
+          method="POST">
+
       <h2>Contact form</h2>
 
       <div class="campo">
         <label>Name</label>
-        <input type="text" name="Nombre" required>
+        <input type="text" name="name" required>
       </div>
 
       <div class="campo">
         <label>Phone</label>
-        <input type="text" name="Apellido" required>
+        <input type="text" name="phone" required>
       </div>
 
       <div class="campo">
         <label>Message</label>
-        <textarea name="Mensaje" required></textarea>
+        <textarea name="message" required></textarea>
       </div>
+
+      <!-- ASUNTO DEL CORREO -->
+      <input type="hidden" name="_subject" value="Nuevo mensaje desde Tayta Inti">
 
       <button type="submit" class="btn-enviar">Enviar</button>
     </form>
@@ -168,8 +178,4 @@
 
 </body>
 </html>
-
-
-
-
 
