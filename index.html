@@ -5,7 +5,7 @@
   <title>Tayta Inti</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* ===== FUENTES PERSONALIZADAS ===== */
+    /* ===== FUENTES ===== */
     @font-face {
       font-family: 'Adelia';
       src: url('fuentes/Adelia.otf') format('opentype');
@@ -19,7 +19,7 @@
       src: url('fuentes/TheRustic-Demo.otf') format('opentype');
     }
 
-    /* ===== RESETEO Y CONFIGURACIÓN GENERAL ===== */
+    /* ===== RESET ===== */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -34,36 +34,28 @@
       background-color: #000;
     }
 
-    /* ===== CARRUSEL DE FONDO ===== */
+    /* ===== CARRUSEL ===== */
     #carrusel {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       z-index: -1;
-      overflow: hidden;
-      pointer-events: none; /* evita bloquear clics */
+      pointer-events: none;
     }
 
     .fondo-carrusel {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background-size: cover;
       background-position: center;
       opacity: 0;
       transition: opacity 1.5s ease-in-out;
-      pointer-events: none;
     }
 
     .fondo-activo {
       opacity: 1;
     }
 
-    /* ===== CONTENEDOR PRINCIPAL ===== */
+    /* ===== CONTENEDOR ===== */
     .contenedor {
       position: relative;
       width: 100%;
@@ -74,106 +66,109 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      z-index: 0; /* aseguramos su nivel */
     }
 
-    /* ===== ICONOS SUPERIORES ===== */
-    .iconos {
+    /* ===== ICONOS IZQUIERDA ===== */
+    .iconos-izquierda {
+      position: absolute;
+      top: 20px;
+      left: 40px;
+      display: flex;
+      gap: 18px; /* MÁS JUNTOS */
+      z-index: 9999;
+    }
+
+    .iconos-izquierda img {
+      width: 60px;   /* MÁS GRANDES */
+      height: 60px;
+      object-fit: contain;
+      cursor: pointer;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .iconos-izquierda img:hover {
+      transform: scale(1.18);
+      filter: brightness(1.5);
+    }
+
+    /* ===== ICONOS DERECHA ===== */
+    .iconos-derecha {
       position: absolute;
       top: 20px;
       right: 40px;
       display: flex;
-      align-items: center;
       gap: 25px;
-      z-index: 9999; /* <- IMPORTANTE: estar por encima */
-      pointer-events: auto; /* aseguramos que reciban clicks */
+      z-index: 9999;
     }
 
-    .iconos img {
+    .iconos-derecha img {
       width: 40px;
       height: 40px;
+      object-fit: contain;
       cursor: pointer;
+      filter: brightness(0) invert(1);
       transition: transform 0.3s ease, filter 0.3s ease;
-      filter: brightness(0) invert(1); /* iconos blancos */
-      display: block;
     }
 
-    .iconos img:hover {
+    .iconos-derecha img:hover {
       transform: scale(1.15);
       filter: brightness(1.5);
     }
 
-    /* ===== LOGO CENTRADO ===== */
+    /* ===== LOGO ===== */
     .logo2 {
       width: 250px;
       max-width: 70%;
-      height: auto;
       margin-bottom: 60px;
-      z-index: 1;
     }
 
-    /* ===== BOTONES HORIZONTALES ===== */
+    /* ===== BOTONES ===== */
     .botones {
       display: flex;
-      justify-content: center;
-      align-items: center;
       gap: 40px;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .boton-cuadrado {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 220px;
       height: 80px;
       border: 2px solid #fff;
       color: #fff;
-      font-size: 1.1rem;
       font-family: 'TheRustic', Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
-      background: transparent;
-      transition: all 0.3s ease;
       border-radius: 8px;
-      z-index: 1;
+      transition: 0.3s;
     }
 
     .boton-cuadrado:hover {
-      background-color: white;
-      color: black;
+      background: #fff;
+      color: #000;
       transform: scale(1.05);
     }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 900px) {
-      .logo2 {
-        width: 200px;
-      }
-
-      .botones {
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-
-      .boton-cuadrado {
-        width: 160px;
-        height: 65px;
-        font-size: 1rem;
-      }
-    }
-
     @media (max-width: 600px) {
-      body {
-        overflow-y: auto;
+      .iconos-izquierda {
+        left: 20px;
+        gap: 14px;
       }
 
-      .iconos {
-        top: 15px;
+      .iconos-izquierda img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .iconos-derecha {
         right: 20px;
         gap: 15px;
       }
 
-      .iconos img {
+      .iconos-derecha img {
         width: 35px;
         height: 35px;
       }
@@ -181,11 +176,6 @@
       .logo2 {
         width: 160px;
         margin-bottom: 40px;
-      }
-
-      .botones {
-        flex-direction: column;
-        gap: 15px;
       }
 
       .boton-cuadrado {
@@ -197,16 +187,33 @@
 </head>
 <body>
 
-  <!-- CARRUSEL DE FONDO -->
+  <!-- CARRUSEL -->
   <div id="carrusel"></div>
 
-  <!-- ICONOS SUPERIORES DERECHA -->
-  <div class="iconos">
-    <a href="index.html"><img src="imagenes/Home.jpg" alt="Home"></a>
-    <a href="formulario.html"><img src="imagenes/Carrito.png" alt="Carrito"></a>
+  <!-- ICONOS IZQUIERDA -->
+  <div class="iconos-izquierda">
+    <a href="https://facebook.com" target="_blank">
+      <img src="imagenes/facebook.png" alt="Facebook">
+    </a>
+    <a href="https://www.instagram.com/taytainti.com.pe?igsh=MTkxOXJibXl1NXMyaQ==" target="_blank">
+      <img src="imagenes/instagram.png" alt="Instagram">
+    </a>
+    <a href="https://wa.me/51956627852" target="_blank">
+      <img src="imagenes/whatssap.png" alt="WhatsApp">
+    </a>
   </div>
 
-  <!-- CONTENIDO CENTRAL -->
+  <!-- ICONOS DERECHA -->
+  <div class="iconos-derecha">
+    <a href="index.html">
+      <img src="imagenes/home.jpg" alt="Home">
+    </a>
+    <a href="formulario.html">
+      <img src="imagenes/carrito.png" alt="Carrito">
+    </a>
+  </div>
+
+  <!-- CONTENIDO -->
   <div class="contenedor">
     <img src="imagenes/logo2.png" alt="Logo Tayta Inti" class="logo2">
 
@@ -219,7 +226,6 @@
   </div>
 
   <script>
-    // ===== CARRUSEL DE IMÁGENES =====
     const imagenes = [
       'imagenes/fondo400.jpg',
       'imagenes/fondo1000.jpg',
@@ -233,23 +239,21 @@
 
     imagenes.forEach((img, i) => {
       const div = document.createElement('div');
-      div.classList.add('fondo-carrusel');
-      if (i === 0) div.classList.add('fondo-activo');
+      div.className = 'fondo-carrusel' + (i === 0 ? ' fondo-activo' : '');
       div.style.backgroundImage = `url('${img}')`;
       carrusel.appendChild(div);
     });
 
     const fondos = document.querySelectorAll('.fondo-carrusel');
 
-    function cambiarFondo() {
+    setInterval(() => {
       fondos[indice].classList.remove('fondo-activo');
       indice = (indice + 1) % fondos.length;
       fondos[indice].classList.add('fondo-activo');
-    }
-
-    setInterval(cambiarFondo, 5000);
+    }, 5000);
   </script>
 
 </body>
 </html>
+
 
