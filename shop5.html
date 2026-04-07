@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tienda de Productos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('imagenes/fondo700.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .contenedor-principal {
+      background-color: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      padding: 60px 40px 80px;
+      box-sizing: border-box;
+    }
+
+    .logo2 {
+      display: block;
+      margin: 0 auto 50px auto;
+      height: 100px;
+      z-index: 2;
+    }
+
+    .productos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      justify-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .product {
+      display: block;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 40px 20px;
+      width: 100%;
+      max-width: 280px;
+      text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+    }
+
+    .product h2 {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .productos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .productos {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ICONOS SUPERIORES */
+    .top-icons {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 15px;
+      z-index: 2000;
+    }
+
+    .top-icons img {
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: transform 0.2s;
+    }
+
+    .top-icons img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ICONOS EN LA PARTE SUPERIOR DERECHA -->
+  <div class="top-icons">
+    <a href="index.html"><img src="imagenes/Home.jpg" alt="Home"></a>
+    <a href="carrito.html"><img src="imagenes/Carrito.png" alt="Carrito"></a>
+  </div>
+
+  <div class="contenedor-principal">
+    <img src="imagenes/logo2.png" alt="Logo" class="logo2" />
+    <div class="productos" id="productos"></div>
+  </div>
+
+  <script>
+    const productos = [
+      { nombre: "Palo Santo Sticks - Standard", enlace: "coffeshop2.html" },
+      { nombre: "Palo Santo Stick - Premium", enlace: "cacaoshop2.html" },
+      { nombre: "Cone Incenses", enlace: "passionfruitshop2.html" },
+      { nombre: "Thick Stick Incense", enlace: "buritishop2.html" },
+      { nombre: "Thin Stick Incense", enlace: "ungurahuishop2.html" },
+      { nombre: "Saw Dust Incense", enlace: "copaibashop2.html" },
+      { nombre: "Milled incense", enlace: "dragonshop2.html" },
+      { nombre: "Natural Art Pieces", enlace: "peruviancoconut2.html" },
+	{ nombre: "Rosewood Hydrolate", enlace: "peruviancoconut2.html" },
+	{ nombre: "Rosewood Chips", enlace: "peruviancoconut2.html" },
+      { nombre: "Palo Santo Hydrolate", enlace: "guarana.html" }
+    ];
+
+    const contenedor = document.getElementById('productos');
+    productos.forEach(p => {
+      contenedor.innerHTML += `
+        <a href="${p.enlace}" class="product">
+          <h2>${p.nombre}</h2>
+        </a>
+      `;
+    });
+  </script> 
+
+</body>
+</html>
