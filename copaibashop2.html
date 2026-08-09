@@ -85,6 +85,32 @@
       color: #eee;
     }
 
+    /* Flechas de navegación */
+    .flecha {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      text-decoration: none;
+      font-size: 50px;
+      font-weight: bold;
+      z-index: 9999;
+      transition: 0.3s;
+    }
+
+    .flecha:hover {
+      color: #00c853;
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .anterior {
+      left: 20px;
+    }
+
+    .siguiente {
+      right: 20px;
+    }
+
     @media (max-width: 768px) {
       .contenedor-principal {
         flex-direction: column;
@@ -95,9 +121,22 @@
       .producto-info {
         text-align: center;
       }
+
+      .flecha {
+        font-size: 36px;
+      }
+
+      .anterior {
+        left: 10px;
+      }
+
+      .siguiente {
+        right: 10px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Logo arriba -->
@@ -106,13 +145,20 @@
   <!-- Contenedor del producto centrado verticalmente -->
   <div class="contenedor-principal producto">
     <img src="imagenes/copaibaoil.png" alt="Graviola Leaf Extract (Annona muricata)">
+
     <div class="producto-info">
-      <h2>Copaiba Oil (Copaifera officinalis)
-</h2>
+      <h2>Copaiba Oil (Copaifera officinalis)</h2>
+
       <p>
-       A natural balsam from the Amazon rainforest, Copaiba Oil is valued for its soothing, anti-inflammatory, and healing properties. It is used in natural health and skincare formulations as a gentle yet effective ingredient for irritation and inflammation relief.
+        A natural balsam from the Amazon rainforest, Copaiba Oil is valued for its soothing, anti-inflammatory, and healing properties. It is used in natural health and skincare formulations as a gentle yet effective ingredient for irritation and inflammation relief.
+      </p>
     </div>
   </div>
+
+  <!-- Flechas de navegación -->
+  <a href="ungurahuishop2.html" class="flecha anterior">&#10094;</a>
+
+  <a href="dragonshop2.html" class="flecha siguiente">&#10095;</a>
 
 </body>
 </html>
