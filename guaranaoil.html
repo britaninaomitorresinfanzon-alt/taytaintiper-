@@ -85,6 +85,133 @@
       color: #eee;
     }
 
+    /* Flechas de navegación */
+    .flecha {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      text-decoration: none;
+      font-size: 50px;
+      font-weight: bold;
+      z-index: 9999;
+      transition: 0.3s;
+    }
+
+    .flecha:hover {
+      color: #00c853;
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .anterior {
+      left: 20px;
+    }
+
+    .siguiente {
+      right: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .contenedor-principal {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+
+      .producto-info {
+        text-align: center;
+      }
+
+      .flecha {
+        font-size: 36px;
+      }
+
+      .anterior {
+        left: 10px;
+      }
+
+      .siguiente {
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Logo arriba -->
+  <img src="imagenes/logo2.png" alt="Logo" class="logo2" />
+
+  <!-- Contenedor del producto centrado verticalmente -->
+  <div class="contenedor-principal producto">
+    <img src="imagenes/guaranaoil.png" alt="Guarana Oil (Paullina cupana)">
+
+    <div class="producto-info">
+      <h2>Guarana Oil (Paullina cupana)</h2>
+
+      <p>
+        Extracted from roasted coffee beans grown in the Andean valleys, this oil is rich in essential fatty acids and antioxidants. Its energising aroma and revitalising properties make it ideal for cosmetic formulations, especially in skin toning and anti-ageing treatments.
+      </p>
+    </div>
+  </div>
+
+  <!-- Flechas de navegación -->
+  <a href="peruviancocoshop2.html" class="flecha anterior">&#10094;</a>
+
+  <a href="shop3.html" class="flecha siguiente">&#10095;</a>
+
+</body>
+</html>      display: block;
+      height: 90px;
+      margin: 40px auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Contenedor del producto centrado verticalmente */
+    .contenedor-principal {
+      position: relative;
+      z-index: 1;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      padding: 40px;
+      max-width: 1000px;
+      width: 90%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      color: #fff;
+      backdrop-filter: blur(3px);
+      margin: 40px 0;
+    }
+
+    .producto img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .producto-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .producto-info h2 {
+      font-size: 24px;
+      margin-bottom: 15px;
+      color: #fff;
+    }
+
+    .producto-info p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #eee;
+    }
+
     @media (max-width: 768px) {
       .contenedor-principal {
         flex-direction: column;
