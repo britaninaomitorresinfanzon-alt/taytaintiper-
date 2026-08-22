@@ -85,6 +85,32 @@
       color: #eee;
     }
 
+    /* Flechas de navegación */
+    .flecha {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      text-decoration: none;
+      font-size: 50px;
+      font-weight: bold;
+      z-index: 9999;
+      transition: 0.3s;
+    }
+
+    .flecha:hover {
+      color: #00c853;
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .anterior {
+      left: 20px;
+    }
+
+    .siguiente {
+      right: 20px;
+    }
+
     @media (max-width: 768px) {
       .contenedor-principal {
         flex-direction: column;
@@ -95,9 +121,22 @@
       .producto-info {
         text-align: center;
       }
+
+      .flecha {
+        font-size: 36px;
+      }
+
+      .anterior {
+        left: 10px;
+      }
+
+      .siguiente {
+        right: 10px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Logo arriba -->
@@ -105,14 +144,23 @@
 
   <!-- Contenedor del producto centrado verticalmente -->
   <div class="contenedor-principal producto">
+
     <img src="imagenes/dragonsblood.png" alt="Graviola Leaf Extract (Annona muricata)">
+
     <div class="producto-info">
-      <h2>Dragon’s Blood (Croton lechleri)
-</h2>
+      <h2>Dragon’s Blood (Croton lechleri)</h2>
+
       <p>
-      This powerful red resin, known as Sangre de Drago, is sustainably collected from Amazonian trees without harming the forest. Celebrated for its regenerative and protective properties, it’s widely used in natural cosmetics and herbal preparations for skin repair.
+        This powerful red resin, known as Sangre de Drago, is sustainably collected from Amazonian trees without harming the forest. Celebrated for its regenerative and protective properties, it’s widely used in natural cosmetics and herbal preparations for skin repair.
+      </p>
     </div>
+
   </div>
+
+  <!-- Flechas de navegación -->
+  <a href="copaibashop2.html" class="flecha anterior">&#10094;</a>
+
+  <a href="peruviancocoshop2.html" class="flecha siguiente">&#10095;</a>
 
 </body>
 </html>
