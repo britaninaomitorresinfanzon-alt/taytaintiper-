@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Graviola Leaf Extract</title>
+
   <style>
     /* Fondo general con imagen + capa negra semitransparente */
     body {
@@ -85,6 +86,32 @@
       color: #eee;
     }
 
+    /* Flechas de navegación */
+    .flecha {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      text-decoration: none;
+      font-size: 50px;
+      font-weight: bold;
+      z-index: 9999;
+      transition: 0.3s;
+    }
+
+    .flecha:hover {
+      color: #00c853;
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .anterior {
+      left: 20px;
+    }
+
+    .siguiente {
+      right: 20px;
+    }
+
     @media (max-width: 768px) {
       .contenedor-principal {
         flex-direction: column;
@@ -95,9 +122,22 @@
       .producto-info {
         text-align: center;
       }
+
+      .flecha {
+        font-size: 36px;
+      }
+
+      .anterior {
+        left: 10px;
+      }
+
+      .siguiente {
+        right: 10px;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <!-- Logo arriba -->
@@ -105,14 +145,25 @@
 
   <!-- Contenedor del producto centrado verticalmente -->
   <div class="contenedor-principal producto">
+
     <img src="imagenes/acaiberrypowder.png" alt="Graviola Leaf Extract (Annona muricata)">
+
     <div class="producto-info">
-      <h2>Açai Berry Powder (Euterpe oleracea)
-</h2>
+
+      <h2>Açai Berry Powder (Euterpe oleracea)</h2>
+
       <p>
-     Wild-harvested in the Peruvian Amazon, Açai Berry Powder is rich in anthocyanins and essential fatty acids. It supports skin health, vitality, and immune function, making it a premium addition to nutritional and cosmetic applications.
+        Wild-harvested in the Peruvian Amazon, Açai Berry Powder is rich in anthocyanins and essential fatty acids. It supports skin health, vitality, and immune function, making it a premium addition to nutritional and cosmetic applications.
+      </p>
+
     </div>
   </div>
+
+  <!-- Flecha anterior -->
+  <a href="GuayusaLeafPowder.html" class="flecha anterior">&#10094;</a>
+
+  <!-- Flecha siguiente -->
+  <a href="GarlicPowder.html" class="flecha siguiente">&#10095;</a>
 
 </body>
 </html>
