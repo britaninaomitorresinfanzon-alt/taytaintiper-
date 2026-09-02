@@ -85,6 +85,32 @@
       color: #eee;
     }
 
+    /* Flechas de navegación */
+    .flecha {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      text-decoration: none;
+      font-size: 50px;
+      font-weight: bold;
+      z-index: 9999;
+      transition: 0.3s;
+    }
+
+    .flecha:hover {
+      color: #00c853;
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .anterior {
+      left: 20px;
+    }
+
+    .siguiente {
+      right: 20px;
+    }
+
     @media (max-width: 768px) {
       .contenedor-principal {
         flex-direction: column;
@@ -94,6 +120,18 @@
 
       .producto-info {
         text-align: center;
+      }
+
+      .flecha {
+        font-size: 36px;
+      }
+
+      .anterior {
+        left: 10px;
+      }
+
+      .siguiente {
+        right: 10px;
       }
     }
   </style>
@@ -105,15 +143,22 @@
 
   <!-- Contenedor del producto centrado verticalmente -->
   <div class="contenedor-principal producto">
-    <img src="imagenes/graviola.jpg" alt="Graviola Leaf Extract (Annona muricata)">
-    <div class="producto-info">
-      <h2>Ginger Powder (Zingiber officinale)
-</h2>
-      <p>
-     Sourced from smallholder farmers in Peru, Ginger Powder brings warmth and vitality to functional foods and herbal formulations. Naturally anti-inflammatory and digestive, it’s a key ingredient for wellness blends and health tonics.
+    <img src="imagenes/gingerpowder.png" alt="Graviola Leaf Extract (Annona muricata)">
 
+    <div class="producto-info">
+      <h2>Ginger Powder (Zingiber officinale)</h2>
+
+      <p>
+        Sourced from smallholder farmers in Peru, Ginger Powder brings warmth and vitality to functional foods and herbal formulations. Naturally anti-inflammatory and digestive, it’s a key ingredient for wellness blends and health tonics.
+      </p>
     </div>
   </div>
+
+  <!-- Flecha anterior -->
+  <a href="GarlicPowder.html" class="flecha anterior">&#10094;</a>
+
+  <!-- Flecha siguiente -->
+  <a href="ArrowrootPowder.html" class="flecha siguiente">&#10095;</a>
 
 </body>
 </html>
