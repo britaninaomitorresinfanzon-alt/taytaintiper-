@@ -85,6 +85,32 @@
       color: #eee;
     }
 
+    /* Flechas de navegación */
+    .flecha {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      color: white;
+      text-decoration: none;
+      font-size: 50px;
+      font-weight: bold;
+      z-index: 9999;
+      transition: 0.3s;
+    }
+
+    .flecha:hover {
+      color: #00c853;
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .anterior {
+      left: 20px;
+    }
+
+    .siguiente {
+      right: 20px;
+    }
+
     @media (max-width: 768px) {
       .contenedor-principal {
         flex-direction: column;
@@ -94,6 +120,18 @@
 
       .producto-info {
         text-align: center;
+      }
+
+      .flecha {
+        font-size: 36px;
+      }
+
+      .anterior {
+        left: 10px;
+      }
+
+      .siguiente {
+        right: 10px;
       }
     }
   </style>
@@ -105,17 +143,22 @@
 
   <!-- Contenedor del producto centrado verticalmente -->
   <div class="contenedor-principal producto">
-    <img src="imagenes/graviola.jpg" alt="Graviola Leaf Extract (Annona muricata)">
+    <img src="imagenes/arrowrootpowder.png" alt="Graviola Leaf Extract (Annona muricata)">
+
     <div class="producto-info">
-      <h2>Arrowroot Powder (Maranta arundinacea)
+      <h2>Arrowroot Powder (Maranta arundinacea)</h2>
 
-</h2>
       <p>
-     A gentle, gluten-free starch derived from tropical Peruvian roots, Arrowroot Powder is prized for its soothing properties. Used in natural cosmetics and food preparations, it offers a soft texture and excellent absorbency.
-
-
+        A gentle, gluten-free starch derived from tropical Peruvian roots, Arrowroot Powder is prized for its soothing properties. Used in natural cosmetics and food preparations, it offers a soft texture and excellent absorbency.
+      </p>
     </div>
   </div>
+
+  <!-- Flecha anterior -->
+  <a href="GingerPowder.html" class="flecha anterior">&#10094;</a>
+
+  <!-- Flecha siguiente -->
+  <a href="GraviolaLeafPowder.html" class="flecha siguiente">&#10095;</a>
 
 </body>
 </html>
