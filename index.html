@@ -4,258 +4,1316 @@
   <meta charset="UTF-8">
   <title>Tayta Inti</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    /* ===== FUENTES ===== */
+
+    /* =====================================================
+       FUENTES
+    ===================================================== */
+
     @font-face {
       font-family: 'Adelia';
       src: url('fuentes/Adelia.otf') format('opentype');
     }
+
     @font-face {
       font-family: 'Scriptorial';
       src: url('fuentes/Scriptorial.ttf') format('truetype');
     }
+
     @font-face {
       font-family: 'TheRustic';
       src: url('fuentes/TheRustic-Demo.otf') format('opentype');
     }
 
-    /* ===== RESET ===== */
+
+    /* =====================================================
+       RESET
+    ===================================================== */
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
+    html,
     body {
-      font-family: Arial, sans-serif;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
-      background-color: #000;
+      width: 100%;
+      height: 100%;
     }
 
-    /* ===== CARRUSEL ===== */
+    body {
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background: #000;
+    }
+
+
+    /* =====================================================
+       CARRUSEL DE FONDOS
+    ===================================================== */
+
     #carrusel {
       position: fixed;
       inset: 0;
-      z-index: -1;
-      pointer-events: none;
+      z-index: -5;
+      overflow: hidden;
+      background: #000;
     }
 
     .fondo-carrusel {
       position: absolute;
-      inset: 0;
+      inset: -4%;
+
       background-size: cover;
       background-position: center;
+
       opacity: 0;
-      transition: opacity 1.5s ease-in-out;
+
+      transform: scale(1.08);
+
+      transition:
+        opacity 1.8s ease-in-out,
+        transform 7s ease;
     }
 
     .fondo-activo {
       opacity: 1;
+      transform: scale(1);
     }
 
-    /* ===== CONTENEDOR ===== */
+
+    /* =====================================================
+       CAPA OSCURA
+    ===================================================== */
+
+    .capa-negra {
+      position: fixed;
+      inset: 0;
+
+      z-index: -4;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,0.70),
+          rgba(0,0,0,0.25),
+          rgba(0,0,0,0.75)
+        );
+    }
+
+
+    /* =====================================================
+       CONTENEDOR
+    ===================================================== */
+
     .contenedor {
       position: relative;
+
       width: 100%;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.55);
+
       display: flex;
       flex-direction: column;
+
       justify-content: center;
       align-items: center;
+
       text-align: center;
+
+      padding: 90px 25px 60px;
     }
 
-    /* ===== ICONOS IZQUIERDA ===== */
+
+    /* =====================================================
+       ICONOS IZQUIERDA
+    ===================================================== */
+
     .iconos-izquierda {
       position: absolute;
-      top: 20px;
+
+      top: 25px;
       left: 40px;
+
       display: flex;
-      gap: 18px; /* MÁS JUNTOS */
+
+      gap: 15px;
+
       z-index: 9999;
     }
 
     .iconos-izquierda img {
-      width: 60px;   /* MÁS GRANDES */
-      height: 60px;
+
+      width: 55px;
+      height: 55px;
+
       object-fit: contain;
+
       cursor: pointer;
-      filter: brightness(0) invert(1);
-      transition: transform 0.3s ease, filter 0.3s ease;
+
+      filter:
+        brightness(0)
+        invert(1);
+
+      transition:
+        transform .35s ease,
+        filter .35s ease;
     }
 
     .iconos-izquierda img:hover {
-      transform: scale(1.18);
-      filter: brightness(1.5);
+
+      transform:
+        translateY(-5px)
+        scale(1.15);
+
+      filter:
+        brightness(1.4)
+        drop-shadow(
+          0 0 10px
+          rgba(255,255,255,.6)
+        );
     }
 
-    /* ===== ICONOS DERECHA ===== */
+
+    /* =====================================================
+       ICONOS DERECHA
+    ===================================================== */
+
     .iconos-derecha {
+
       position: absolute;
-      top: 20px;
+
+      top: 25px;
       right: 40px;
+
       display: flex;
-      gap: 15px;
+
+      gap: 18px;
+
       z-index: 9999;
     }
 
     .iconos-derecha img {
-      width: 40px;
-      height: 40px;
+
+      width: 43px;
+      height: 43px;
+
       object-fit: contain;
+
       cursor: pointer;
-      filter: brightness(0) invert(1);
-      transition: transform 0.3s ease, filter 0.3s ease;
+
+      filter:
+        brightness(0)
+        invert(1);
+
+      transition:
+        transform .35s ease,
+        filter .35s ease;
     }
 
     .iconos-derecha img:hover {
-      transform: scale(1.15);
-      filter: brightness(1.5);
+
+      transform:
+        translateY(-5px)
+        scale(1.15);
+
+      filter:
+        brightness(1.4)
+        drop-shadow(
+          0 0 10px
+          rgba(255,255,255,.6)
+        );
     }
 
-    /* ===== LOGO ===== */
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
     .logo2 {
+
       width: 250px;
+
       max-width: 70%;
-      margin-bottom: 60px;
+
+      margin-bottom: 30px;
+
+      animation:
+        entradaLogo 1.2s ease forwards,
+        flotacion 5s ease-in-out 1.2s infinite;
     }
 
-    /* ===== BOTONES ===== */
-    .botones {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      justify-content: center;
+    @keyframes entradaLogo {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(-30px)
+          scale(.9);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
     }
+
+    @keyframes flotacion {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-7px);
+      }
+
+    }
+
+
+    /* =====================================================
+       TEXTO
+    ===================================================== */
+
+    .texto-explora {
+
+      color: white;
+
+      font-family:
+        'Scriptorial',
+        Arial,
+        sans-serif;
+
+      font-size: 19px;
+
+      letter-spacing: 2px;
+
+      margin-bottom: 25px;
+
+      animation:
+        aparecer 1s ease .7s both;
+    }
+
+    @keyframes aparecer {
+
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    /* =====================================================
+       CONTENEDOR DE CATEGORÍAS
+    ===================================================== */
+
+    .botones {
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: stretch;
+
+      gap: 18px;
+
+      flex-wrap: wrap;
+
+      max-width: 1150px;
+
+      width: 100%;
+    }
+
+
+    /* =====================================================
+       TARJETAS
+    ===================================================== */
 
     .boton-cuadrado {
-      width: 220px;
-      height: 80px;
-      border: 2px solid #fff;
-      color: #fff;
-      font-family: 'TheRustic', Arial, sans-serif;
+
+      position: relative;
+
+      width: 205px;
+
+      height: 100px;
+
+      overflow: hidden;
+
+      border-radius: 12px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.75);
+
+      background:
+        rgba(0,0,0,.35);
+
+      backdrop-filter: blur(5px);
+
+      color: white;
+
+      font-family:
+        'TheRustic',
+        Arial,
+        sans-serif;
+
+      font-size: 18px;
+
+      letter-spacing: 1px;
+
       display: flex;
+
       align-items: center;
+
       justify-content: center;
+
+      text-align: center;
+
       text-decoration: none;
-      border-radius: 8px;
-      transition: 0.3s;
+
+      box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.3);
+
+      transition:
+        transform .45s ease,
+        box-shadow .45s ease;
     }
+
+
+    /* =====================================================
+       IMAGEN DE PREVIEW
+    ===================================================== */
+
+    .preview {
+
+      position: absolute;
+
+      inset: 0;
+
+      background-size: cover;
+
+      background-position: center;
+
+      opacity: 0;
+
+      transform: scale(1.15);
+
+      transition:
+        opacity .5s ease,
+        transform .8s ease;
+    }
+
+
+    /* OSCURECER IMAGEN */
+
+    .preview::after {
+
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background:
+        rgba(0,0,0,.48);
+    }
+
+
+    /* =====================================================
+       NOMBRE
+    ===================================================== */
+
+    .nombre-categoria {
+
+      position: relative;
+
+      z-index: 3;
+
+      padding: 10px;
+
+      text-shadow:
+        0 2px 8px
+        rgba(0,0,0,.8);
+
+      transition:
+        transform .4s ease;
+    }
+
+
+    /* =====================================================
+       HOVER
+    ===================================================== */
 
     .boton-cuadrado:hover {
-      background: #fff;
-      color: #000;
-      transform: scale(1.05);
+
+      transform:
+        translateY(-10px)
+        scale(1.04);
+
+      box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.55);
+
+      border-color: white;
     }
 
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 600px) {
-      .iconos-izquierda {
-        left: 20px;
-        gap: 14px;
-      }
+    .boton-cuadrado:hover .preview {
 
-      .iconos-izquierda img {
-        width: 50px;
-        height: 50px;
-      }
+      opacity: 1;
 
-      .iconos-derecha {
-        right: 20px;
-        gap: 15px;
-      }
+      transform: scale(1);
+    }
 
-      .iconos-derecha img {
-        width: 35px;
-        height: 35px;
-      }
+    .boton-cuadrado:hover .nombre-categoria {
 
-      .logo2 {
-        width: 160px;
-        margin-bottom: 40px;
+      transform: scale(1.08);
+
+    }
+
+
+    /* =====================================================
+       BRILLO
+    ===================================================== */
+
+    .boton-cuadrado::before {
+
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: -120%;
+
+      width: 60%;
+      height: 100%;
+
+      z-index: 4;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.25),
+          transparent
+        );
+
+      transform:
+        skewX(-20deg);
+
+      transition:
+        left .8s ease;
+    }
+
+    .boton-cuadrado:hover::before {
+
+      left: 140%;
+    }
+
+
+    /* =====================================================
+       FLECHAS
+    ===================================================== */
+
+    .flecha {
+
+      position: absolute;
+
+      top: 50%;
+
+      transform:
+        translateY(-50%);
+
+      width: 45px;
+      height: 45px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.5);
+
+      border-radius: 50%;
+
+      background:
+        rgba(0,0,0,.25);
+
+      color: white;
+
+      font-size: 25px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      z-index: 20;
+
+      opacity: 0;
+
+      transition:
+        opacity .3s,
+        transform .3s,
+        background .3s;
+    }
+
+    .contenedor:hover .flecha {
+
+      opacity: 1;
+    }
+
+    .flecha:hover {
+
+      background:
+        rgba(255,255,255,.2);
+
+      transform:
+        translateY(-50%)
+        scale(1.12);
+    }
+
+    .flecha-izquierda {
+      left: 25px;
+    }
+
+    .flecha-derecha {
+      right: 25px;
+    }
+
+
+    /* =====================================================
+       INDICADORES
+    ===================================================== */
+
+    .indicadores {
+
+      position: absolute;
+
+      bottom: 25px;
+
+      left: 50%;
+
+      transform:
+        translateX(-50%);
+
+      display: flex;
+
+      gap: 9px;
+    }
+
+    .indicador {
+
+      width: 8px;
+      height: 8px;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.4);
+
+      cursor: pointer;
+
+      transition:
+        transform .3s,
+        background .3s;
+    }
+
+    .indicador.activo {
+
+      background: white;
+
+      transform: scale(1.5);
+    }
+
+
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 900px) {
+
+      .botones {
+        max-width: 680px;
       }
 
       .boton-cuadrado {
-        width: 80%;
-        max-width: 250px;
+        width: 190px;
       }
+
     }
+
+
+    @media (max-width: 600px) {
+
+      .contenedor {
+
+        padding:
+          95px 15px 60px;
+      }
+
+
+      .iconos-izquierda {
+
+        top: 17px;
+        left: 15px;
+
+        gap: 6px;
+      }
+
+      .iconos-izquierda img {
+
+        width: 42px;
+        height: 42px;
+      }
+
+
+      .iconos-derecha {
+
+        top: 17px;
+        right: 15px;
+
+        gap: 9px;
+      }
+
+      .iconos-derecha img {
+
+        width: 34px;
+        height: 34px;
+      }
+
+
+      .logo2 {
+
+        width: 165px;
+
+        margin-bottom: 20px;
+      }
+
+
+      .texto-explora {
+
+        font-size: 16px;
+
+        margin-bottom: 18px;
+      }
+
+
+      .botones {
+
+        width: 100%;
+
+        max-height: 58vh;
+
+        overflow-y: auto;
+
+        gap: 10px;
+
+        padding: 5px;
+      }
+
+
+      .boton-cuadrado {
+
+        width: 100%;
+
+        max-width: 310px;
+
+        height: 62px;
+
+        min-height: 62px;
+
+        font-size: 16px;
+      }
+
+
+      /*
+        En móvil mostramos ligeramente
+        la imagen para que las categorías
+        sigan siendo visuales.
+      */
+
+      .preview {
+
+        opacity: .35;
+
+        transform: scale(1);
+      }
+
+
+      .flecha {
+
+        width: 38px;
+        height: 38px;
+
+        font-size: 20px;
+
+        opacity: .65;
+      }
+
+      .flecha-izquierda {
+        left: 7px;
+      }
+
+      .flecha-derecha {
+        right: 7px;
+      }
+
+    }
+
   </style>
 </head>
+
+
 <body>
 
-  <!-- CARRUSEL -->
+
+  <!-- =====================================================
+       CARRUSEL DE FONDOS
+  ===================================================== -->
+
   <div id="carrusel"></div>
 
-  <!-- ICONOS IZQUIERDA -->
-  <div class="iconos-izquierda">
-    <a href="https://facebook.com" target="_blank">
-      <img src="imagenes/facebook.png" alt="Facebook">
-    </a>
-    <a href="https://www.instagram.com/taytainti.com.pe?igsh=MTkxOXJibXl1NXMyaQ==" target="_blank">
-      <img src="imagenes/instagram.png" alt="Instagram">
-    </a>
-    <a href="https://wa.me/51956627852" target="_blank">
-      <img src="imagenes/whatssap.png" alt="WhatsApp">
-    </a>
-  </div>
+  <div class="capa-negra"></div>
 
-  <!-- ICONOS DERECHA -->
-  <div class="iconos-derecha">
-    <a href="index.html">
-      <img src="imagenes/Home.jpg" alt="Home">
-    </a>
-    <a href="formulario.html">
-      <img src="imagenes/Carrito.png" alt="Carrito">
-    </a>
-  </div>
 
-  <!-- CONTENIDO -->
+  <!-- =====================================================
+       CONTENIDO
+  ===================================================== -->
+
   <div class="contenedor">
-    <img src="imagenes/logo2.png" alt="Logo Tayta Inti" class="logo2">
+
+
+    <!-- ===================================================
+         REDES SOCIALES
+    =================================================== -->
+
+    <div class="iconos-izquierda">
+
+      <a
+        href="https://facebook.com"
+        target="_blank">
+
+        <img
+          src="imagenes/facebook.png"
+          alt="Facebook">
+
+      </a>
+
+
+      <a
+        href="https://www.instagram.com/taytainti.com.pe?igsh=MTkxOXJibXl1NXMyaQ=="
+        target="_blank">
+
+        <img
+          src="imagenes/instagram.png"
+          alt="Instagram">
+
+      </a>
+
+
+      <a
+        href="https://wa.me/51956627852"
+        target="_blank">
+
+        <img
+          src="imagenes/whatssap.png"
+          alt="WhatsApp">
+
+      </a>
+
+    </div>
+
+
+    <!-- ===================================================
+         NAVEGACIÓN
+    =================================================== -->
+
+    <div class="iconos-derecha">
+
+      <a href="index.html">
+
+        <img
+          src="imagenes/Home.jpg"
+          alt="Home">
+
+      </a>
+
+
+      <a href="formulario.html">
+
+        <img
+          src="imagenes/Carrito.png"
+          alt="Carrito">
+
+      </a>
+
+    </div>
+
+
+    <!-- ===================================================
+         LOGO
+    =================================================== -->
+
+    <img
+      src="imagenes/logo2.png"
+      alt="Logo Tayta Inti"
+      class="logo2">
+
+
+    <!-- ===================================================
+         TEXTO
+    =================================================== -->
+
+    <div class="texto-explora">
+
+      Explore our natural collections
+
+    </div>
+
+
+    <!-- ===================================================
+         CATEGORÍAS
+    =================================================== -->
 
     <div class="botones">
-      <a href="shop.html" class="boton-cuadrado">EXTRACTS</a>
-      <a href="shop2.html" class="boton-cuadrado">OILS & BALSAMS</a>
-      <a href="shop3.html" class="boton-cuadrado">POWDERS</a>
-      <a href="shop4.html" class="boton-cuadrado">DRIED HERBS</a>
-      <a href="shop5.html" class="boton-cuadrado">PALO SANTO COLLECTION</a>
+
+
+      <!-- EXTRACTS -->
+
+      <a
+        href="shop.html"
+        class="boton-cuadrado">
+
+        <div
+          class="preview"
+          style="
+            background-image:
+            url('imagenes/extracts.png');
+          ">
+        </div>
+
+        <span class="nombre-categoria">
+          EXTRACTS
+        </span>
+
+      </a>
+
+
+      <!-- OILS -->
+
+      <a
+        href="shop2.html"
+        class="boton-cuadrado">
+
+        <div
+          class="preview"
+          style="
+            background-image:
+            url('imagenes/oils.png');
+          ">
+        </div>
+
+        <span class="nombre-categoria">
+          OILS & BALSAMS
+        </span>
+
+      </a>
+
+
+      <!-- POWDERS -->
+
+      <a
+        href="shop3.html"
+        class="boton-cuadrado">
+
+        <div
+          class="preview"
+          style="
+            background-image:
+            url('imagenes/powders.png');
+          ">
+        </div>
+
+        <span class="nombre-categoria">
+          POWDERS
+        </span>
+
+      </a>
+
+
+      <!-- DRIED HERBS -->
+
+      <a
+        href="shop4.html"
+        class="boton-cuadrado">
+
+        <div
+          class="preview"
+          style="
+            background-image:
+            url('imagenes/dried herbs.png');
+          ">
+        </div>
+
+        <span class="nombre-categoria">
+          DRIED HERBS
+        </span>
+
+      </a>
+
+
+      <!-- PALO SANTO -->
+
+      <a
+        href="shop5.html"
+        class="boton-cuadrado">
+
+        <div
+          class="preview"
+          style="
+            background-image:
+            url('imagenes/fondo700.jpg');
+          ">
+        </div>
+
+        <span class="nombre-categoria">
+          PALO SANTO COLLECTION
+        </span>
+
+      </a>
+
+
     </div>
+
+
+    <!-- ===================================================
+         FLECHA IZQUIERDA
+    =================================================== -->
+
+    <button
+      class="flecha flecha-izquierda"
+      onclick="cambiarFondo(-1)"
+      aria-label="Imagen anterior">
+
+      ‹
+
+    </button>
+
+
+    <!-- ===================================================
+         FLECHA DERECHA
+    =================================================== -->
+
+    <button
+      class="flecha flecha-derecha"
+      onclick="cambiarFondo(1)"
+      aria-label="Imagen siguiente">
+
+      ›
+
+    </button>
+
+
+    <!-- ===================================================
+         INDICADORES
+    =================================================== -->
+
+    <div
+      class="indicadores"
+      id="indicadores">
+    </div>
+
+
   </div>
 
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ===================================================== -->
+
   <script>
+
     const imagenes = [
+
       'imagenes/fondo400.jpg',
+
       'imagenes/fondo1000.jpg',
+
       'imagenes/fondo2000.jpg',
+
       'imagenes/fondo3000.jpg',
+
       'imagenes/fondo4000.jpg'
+
     ];
 
-    const carrusel = document.getElementById('carrusel');
+
+    const carrusel =
+      document.getElementById(
+        'carrusel'
+      );
+
+
+    const indicadores =
+      document.getElementById(
+        'indicadores'
+      );
+
+
     let indice = 0;
 
-    imagenes.forEach((img, i) => {
-      const div = document.createElement('div');
-      div.className = 'fondo-carrusel' + (i === 0 ? ' fondo-activo' : '');
-      div.style.backgroundImage = `url('${img}')`;
-      carrusel.appendChild(div);
-    });
 
-    const fondos = document.querySelectorAll('.fondo-carrusel');
+    /* =========================================
+       CREAR FONDOS
+    ========================================= */
 
-    setInterval(() => {
-      fondos[indice].classList.remove('fondo-activo');
-      indice = (indice + 1) % fondos.length;
-      fondos[indice].classList.add('fondo-activo');
-    }, 5000);
+    imagenes.forEach(
+      (img, i) => {
+
+        const fondo =
+          document.createElement(
+            'div'
+          );
+
+        fondo.className =
+          'fondo-carrusel' +
+          (
+            i === 0
+              ? ' fondo-activo'
+              : ''
+          );
+
+        fondo.style.backgroundImage =
+          `url('${img}')`;
+
+        carrusel.appendChild(
+          fondo
+        );
+
+
+        /* INDICADORES */
+
+        const punto =
+          document.createElement(
+            'div'
+          );
+
+        punto.className =
+          'indicador' +
+          (
+            i === 0
+              ? ' activo'
+              : ''
+          );
+
+        punto.onclick = () => {
+
+          mostrarFondo(i);
+
+          reiniciarTemporizador();
+
+        };
+
+        indicadores.appendChild(
+          punto
+        );
+
+      }
+    );
+
+
+    const fondos =
+      document.querySelectorAll(
+        '.fondo-carrusel'
+      );
+
+
+    const puntos =
+      document.querySelectorAll(
+        '.indicador'
+      );
+
+
+    /* =========================================
+       MOSTRAR FONDO
+    ========================================= */
+
+    function mostrarFondo(nuevo) {
+
+      fondos[indice]
+        .classList
+        .remove(
+          'fondo-activo'
+        );
+
+      puntos[indice]
+        .classList
+        .remove(
+          'activo'
+        );
+
+
+      indice = nuevo;
+
+
+      fondos[indice]
+        .classList
+        .add(
+          'fondo-activo'
+        );
+
+      puntos[indice]
+        .classList
+        .add(
+          'activo'
+        );
+
+    }
+
+
+    /* =========================================
+       CAMBIAR FONDO
+    ========================================= */
+
+    function cambiarFondo(
+      direccion
+    ) {
+
+      let nuevo =
+        indice + direccion;
+
+
+      if (
+        nuevo >= imagenes.length
+      ) {
+
+        nuevo = 0;
+
+      }
+
+
+      if (nuevo < 0) {
+
+        nuevo =
+          imagenes.length - 1;
+
+      }
+
+
+      mostrarFondo(nuevo);
+
+      reiniciarTemporizador();
+
+    }
+
+
+    /* =========================================
+       TEMPORIZADOR
+    ========================================= */
+
+    let temporizador =
+      setInterval(
+        avanzarAutomaticamente,
+        5000
+      );
+
+
+    function avanzarAutomaticamente() {
+
+      const nuevo =
+        (indice + 1) %
+        imagenes.length;
+
+      mostrarFondo(nuevo);
+
+    }
+
+
+    function reiniciarTemporizador() {
+
+      clearInterval(
+        temporizador
+      );
+
+      temporizador =
+        setInterval(
+          avanzarAutomaticamente,
+          5000
+        );
+
+    }
+
+
+    /* =========================================
+       SWIPE EN CELULAR
+    ========================================= */
+
+    let inicioX = 0;
+
+
+    document.addEventListener(
+      'touchstart',
+      evento => {
+
+        inicioX =
+          evento.touches[0].clientX;
+
+      },
+      {
+        passive: true
+      }
+    );
+
+
+    document.addEventListener(
+      'touchend',
+      evento => {
+
+        const finalX =
+          evento.changedTouches[0].clientX;
+
+
+        const diferencia =
+          inicioX - finalX;
+
+
+        if (
+          Math.abs(diferencia) > 50
+        ) {
+
+          if (
+            diferencia > 0
+          ) {
+
+            cambiarFondo(1);
+
+          } else {
+
+            cambiarFondo(-1);
+
+          }
+
+        }
+
+      },
+      {
+        passive: true
+      }
+    );
+
   </script>
+
 
 </body>
 </html>
-
-
-
