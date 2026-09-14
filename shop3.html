@@ -649,6 +649,165 @@
 
 
     /* =====================================================
+       DETALLE DEL PRODUCTO
+    ===================================================== */
+
+    .detalle-producto {
+      display: none;
+
+      max-width: 950px;
+
+      margin: 0 auto;
+
+      text-align: center;
+
+      animation:
+        detalleEntrada .8s ease both;
+    }
+
+    .detalle-producto.activo {
+      display: block;
+    }
+
+    @keyframes detalleEntrada {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0);
+      }
+
+    }
+
+    .detalle-imagen {
+      display: block;
+
+      width: 100%;
+
+      max-width: 440px;
+
+      max-height: 430px;
+
+      object-fit: contain;
+
+      margin: 0 auto 30px;
+
+      border-radius: 5px;
+
+      filter:
+        drop-shadow(
+          0 12px 30px
+          rgba(0,0,0,.65)
+        );
+    }
+
+    .detalle-nombre {
+      font-family:
+        'Adelia',
+        serif;
+
+      font-size: 30px;
+
+      font-weight: normal;
+
+      line-height: 1.5;
+
+      letter-spacing: 2px;
+
+      text-shadow:
+        0 3px 12px
+        rgba(0,0,0,.9);
+
+      margin-bottom: 20px;
+    }
+
+    .detalle-linea {
+      width: 80px;
+
+      height: 1px;
+
+      background:
+        rgba(255,255,255,.8);
+
+      margin: 0 auto 25px;
+    }
+
+    .detalle-descripcion {
+      max-width: 760px;
+
+      margin: 0 auto;
+
+      font-family:
+        'Scriptorial',
+        cursive;
+
+      font-size: 20px;
+
+      line-height: 1.8;
+
+      letter-spacing: .5px;
+
+      color:
+        rgba(255,255,255,.9);
+
+      text-shadow:
+        0 2px 8px
+        rgba(0,0,0,.8);
+    }
+
+    .volver-productos {
+      display: inline-block;
+
+      margin-top: 40px;
+
+      padding: 14px 28px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.55);
+
+      border-radius: 5px;
+
+      background:
+        rgba(0,0,0,.35);
+
+      color: white;
+
+      font-family:
+        'Adelia',
+        serif;
+
+      font-size: 15px;
+
+      letter-spacing: 1px;
+
+      cursor: pointer;
+
+      transition:
+        background .35s ease,
+        transform .35s ease,
+        border-color .35s ease;
+    }
+
+    .volver-productos:hover {
+      background:
+        rgba(255,255,255,.15);
+
+      border-color:
+        white;
+
+      transform:
+        translateY(-4px);
+    }
+
+
+    /* =====================================================
        TABLET
     ===================================================== */
 
@@ -720,6 +879,20 @@
 
       .product h2 {
         font-size: 16px;
+      }
+
+      .detalle-nombre {
+        font-size: 23px;
+        letter-spacing: 1px;
+      }
+
+      .detalle-descripcion {
+        font-size: 17px;
+        line-height: 1.7;
+      }
+
+      .detalle-imagen {
+        max-width: 90%;
       }
 
     }
@@ -796,13 +969,13 @@
 
     <div class="titulo">
 
-      <h1>
+      <h1 id="titulo-seccion">
         Powders
       </h1>
 
       <div class="titulo-linea"></div>
 
-      <p>
+      <p id="subtitulo-seccion">
         Natural Peruvian botanical powders
       </p>
 
@@ -815,6 +988,47 @@
       class="productos"
       id="productos">
     </div>
+
+
+    <!-- DETALLE DEL PRODUCTO -->
+
+    <section
+      class="detalle-producto"
+      id="detalle-producto"
+      aria-live="polite">
+
+      <img
+        src=""
+        alt=""
+        class="detalle-imagen"
+        id="detalle-imagen">
+
+
+      <h2
+        class="detalle-nombre"
+        id="detalle-nombre">
+      </h2>
+
+
+      <div class="detalle-linea"></div>
+
+
+      <p
+        class="detalle-descripcion"
+        id="detalle-descripcion">
+      </p>
+
+
+      <button
+        class="volver-productos"
+        id="volver-productos"
+        type="button">
+
+        ← Back to Powders
+
+      </button>
+
+    </section>
 
 
   </main>
@@ -831,8 +1045,8 @@
         imagen:
           "imagenes/macarootpowder.png",
 
-        enlace:
-          "MacaRootPowder.html"
+        descripcion:
+          "Maca Root Powder is traditionally harvested from the Peruvian Andes. It is valued for its earthy flavor, nutritional properties, and use in natural food, wellness, and botanical formulations."
       },
 
 
@@ -843,20 +1057,20 @@
         imagen:
           "imagenes/guayusapowder.png",
 
-        enlace:
-          "GuayusaLeafPowder.html"
+        descripcion:
+          "Guayusa Leaf Powder comes from the Amazonian guayusa plant. It is traditionally used in herbal preparations and is appreciated for its natural botanical properties and distinctive character."
       },
 
 
       {
         nombre:
-          "Acai Berry Powder (Euterpe olereace)",
+          "Acai Berry Powder (Euterpe oleracea)",
 
         imagen:
           "imagenes/acaiberrypowder.png",
 
-        enlace:
-          "AçaiBerryPowder.html"
+        descripcion:
+          "Acai Berry Powder is obtained from the fruit of the acai palm, native to the Amazon. It is rich in naturally occurring pigments and is widely used in nutritional, cosmetic, and botanical applications."
       },
 
 
@@ -867,8 +1081,8 @@
         imagen:
           "imagenes/garlicpowder.png",
 
-        enlace:
-          "GarlicPowder.html"
+        descripcion:
+          "Garlic Powder is made from carefully dried garlic bulbs. It offers the characteristic aroma and flavor of garlic and is commonly used in culinary, nutritional, and natural product formulations."
       },
 
 
@@ -879,8 +1093,8 @@
         imagen:
           "imagenes/gingerpowder.png",
 
-        enlace:
-          "GingerPowder.html"
+        descripcion:
+          "Ginger Powder is produced from dried ginger root. It is appreciated for its warm, spicy aroma and is commonly used in food, herbal preparations, and natural wellness products."
       },
 
 
@@ -891,8 +1105,8 @@
         imagen:
           "imagenes/arrowrootpowder.png",
 
-        enlace:
-          "ArrowrootPowder.html"
+        descripcion:
+          "Arrowroot Powder is a fine botanical powder traditionally used as a natural thickener. Its smooth texture makes it suitable for culinary, cosmetic, and natural formulation applications."
       },
 
 
@@ -903,8 +1117,8 @@
         imagen:
           "imagenes/graviolapowder.png",
 
-        enlace:
-          "GraviolaLeafPowder.html"
+        descripcion:
+          "Graviola Leaf Powder is obtained from the leaves of Annona muricata. It is used in traditional botanical preparations and is valued for its natural plant compounds and characteristic herbal profile."
       },
 
 
@@ -915,8 +1129,8 @@
         imagen:
           "imagenes/graviola.jpg",
 
-        enlace:
-          "SachaJergonPowder.html"
+        descripcion:
+          "Sacha Jergón is an Amazonian botanical traditionally recognized in local herbal practices. Its powdered form is used in traditional preparations and natural botanical applications."
       },
 
 
@@ -927,20 +1141,20 @@
         imagen:
           "imagenes/algarrobopowder.png",
 
-        enlace:
-          "AlgarroboPowder.html"
+        descripcion:
+          "Algarrobo Powder comes from the pods of the algarrobo tree, traditionally associated with the dry forests of northern Peru. It has a naturally sweet, earthy character and is used in food and nutritional preparations."
       },
 
 
       {
         nombre:
-          "Cat´s Claw Powder (Uncaria tomentosa)",
+          "Cat's Claw Powder (Uncaria tomentosa)",
 
         imagen:
           "imagenes/catsclawpowder.png",
 
-        enlace:
-          "CatsClawPowder.html"
+        descripcion:
+          "Cat's Claw Powder is obtained from the traditional Amazonian botanical known as Uña de Gato. It is used in herbal preparations and natural botanical formulations."
       },
 
 
@@ -951,8 +1165,8 @@
         imagen:
           "imagenes/yaconpowder.png",
 
-        enlace:
-          "YaconPowder.html"
+        descripcion:
+          "Yacon Powder is made from the yacon root, a plant native to the Andes. It is appreciated for its naturally sweet profile and is used in nutritional, culinary, and botanical applications."
       },
 
 
@@ -963,8 +1177,8 @@
         imagen:
           "imagenes/sweetpotato.png",
 
-        enlace:
-          "SweetPotatoPowder.html"
+        descripcion:
+          "Sweet Potato Powder is produced from carefully dried sweet potatoes. It provides a naturally earthy flavor and is suitable for culinary, nutritional, and natural food formulations."
       },
 
 
@@ -975,8 +1189,8 @@
         imagen:
           "imagenes/cacaopowder.png",
 
-        enlace:
-          "CacaoPowder.html"
+        descripcion:
+          "Cacao Powder is obtained from carefully processed cacao beans. It has a rich chocolate aroma and is commonly used in food, nutritional products, cosmetic preparations, and botanical formulations."
       },
 
 
@@ -987,26 +1201,50 @@
         imagen:
           "imagenes/huanarpomacho.png",
 
-        enlace:
-          "HuanarpoMacho.html"
+        descripcion:
+          "Huanarpo Macho is an Andean botanical traditionally used in local herbal practices. Its powdered form is used in traditional preparations and natural botanical applications."
       }
 
     ];
 
 
     const contenedor =
-      document.getElementById(
-        'productos'
-      );
+      document.getElementById('productos');
+
+    const detalle =
+      document.getElementById('detalle-producto');
+
+    const detalleImagen =
+      document.getElementById('detalle-imagen');
+
+    const detalleNombre =
+      document.getElementById('detalle-nombre');
+
+    const detalleDescripcion =
+      document.getElementById('detalle-descripcion');
+
+    const volver =
+      document.getElementById('volver-productos');
+
+    const tituloSeccion =
+      document.getElementById('titulo-seccion');
+
+    const subtituloSeccion =
+      document.getElementById('subtitulo-seccion');
 
 
-    productos.forEach(p => {
+    /* =====================================================
+       CREAR TARJETAS
+    ===================================================== */
+
+    productos.forEach((p, indice) => {
 
       contenedor.innerHTML += `
 
         <a
-          href="${p.enlace}"
-          class="product">
+          href="#"
+          class="product"
+          data-producto="${indice}">
 
           <img
             src="${p.imagen}"
@@ -1027,6 +1265,84 @@
         </a>
 
       `;
+
+    });
+
+
+    /* =====================================================
+       ABRIR DETALLE
+    ===================================================== */
+
+    document.querySelectorAll('.product').forEach(producto => {
+
+      producto.addEventListener('click', function(event) {
+
+        event.preventDefault();
+
+        const indice =
+          this.getAttribute('data-producto');
+
+        const productoSeleccionado =
+          productos[indice];
+
+
+        detalleImagen.src =
+          productoSeleccionado.imagen;
+
+        detalleImagen.alt =
+          productoSeleccionado.nombre;
+
+        detalleNombre.textContent =
+          productoSeleccionado.nombre;
+
+        detalleDescripcion.textContent =
+          productoSeleccionado.descripcion;
+
+
+        contenedor.style.display = 'none';
+
+        detalle.classList.add('activo');
+
+
+        tituloSeccion.textContent =
+          'Product Details';
+
+        subtituloSeccion.textContent =
+          'Discover our natural Peruvian botanical powders';
+
+
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+
+      });
+
+    });
+
+
+    /* =====================================================
+       VOLVER A LA LISTA
+    ===================================================== */
+
+    volver.addEventListener('click', function() {
+
+      detalle.classList.remove('activo');
+
+      contenedor.style.display = 'grid';
+
+
+      tituloSeccion.textContent =
+        'Powders';
+
+      subtituloSeccion.textContent =
+        'Natural Peruvian botanical powders';
+
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
 
     });
 
