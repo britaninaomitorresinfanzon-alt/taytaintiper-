@@ -12,7 +12,6 @@
 
   <title>Powders | Tayta Inti</title>
 
-
   <style>
 
     /* =====================================================
@@ -28,7 +27,6 @@
       font-family: 'Scriptorial';
       src: url('fuentes/Scriptorial.ttf') format('truetype');
     }
-
 
     /* =====================================================
        GENERAL
@@ -51,7 +49,6 @@
       background: #000;
       overflow-x: hidden;
     }
-
 
     /* =====================================================
        FONDO
@@ -87,7 +84,6 @@
 
     }
 
-
     /* =====================================================
        CAPA OSCURA
     ===================================================== */
@@ -108,7 +104,6 @@
         );
     }
 
-
     /* =====================================================
        CONTENEDOR
     ===================================================== */
@@ -126,7 +121,6 @@
           transparent 50%
         );
     }
-
 
     /* =====================================================
        ICONOS SUPERIORES
@@ -189,7 +183,6 @@
         rgba(255,255,255,.16);
     }
 
-
     /* =====================================================
        LOGO
     ===================================================== */
@@ -232,7 +225,6 @@
       }
 
     }
-
 
     /* =====================================================
        TÍTULO
@@ -306,7 +298,6 @@
 
     }
 
-
     /* =====================================================
        PRODUCTOS
     ===================================================== */
@@ -325,7 +316,6 @@
 
       margin: 0 auto;
     }
-
 
     /* =====================================================
        BOTÓN PRODUCTO
@@ -383,7 +373,6 @@
       animation:
         tarjetaEntrada .8s ease forwards;
     }
-
 
     /* =====================================================
        ANIMACIÓN DE ENTRADA
@@ -445,7 +434,6 @@
       animation-delay: 2.1s;
     }
 
-
     @keyframes tarjetaEntrada {
 
       from {
@@ -463,7 +451,6 @@
       }
 
     }
-
 
     /* =====================================================
        IMAGEN
@@ -491,7 +478,6 @@
       z-index: 1;
     }
 
-
     /* =====================================================
        CAPA OSCURA SOBRE LA IMAGEN
     ===================================================== */
@@ -512,9 +498,9 @@
       z-index: 2;
     }
 
-
     /* =====================================================
        NOMBRE
+       CAMBIO: AHORA USA SCRIPTORIAL
     ===================================================== */
 
     .product h2 {
@@ -523,8 +509,8 @@
       z-index: 5;
 
       font-family:
-        'Adelia',
-        serif;
+        'Scriptorial',
+        cursive;
 
       font-size: 18px;
 
@@ -542,7 +528,6 @@
         transform .4s ease,
         letter-spacing .4s ease;
     }
-
 
     /* =====================================================
        HOVER
@@ -580,7 +565,6 @@
         1.5px;
     }
 
-
     /* =====================================================
        EFECTO BRILLO
     ===================================================== */
@@ -617,7 +601,6 @@
       left: 140%;
     }
 
-
     /* =====================================================
        LÍNEA DECORATIVA
     ===================================================== */
@@ -646,7 +629,6 @@
     .product:hover .linea {
       width: 50px;
     }
-
 
     /* =====================================================
        DETALLE DEL PRODUCTO
@@ -738,14 +720,19 @@
       margin: 0 auto 25px;
     }
 
+    /* =====================================================
+       DESCRIPCIÓN DEL PRODUCTO
+       CAMBIO: AHORA USA ADELIA
+    ===================================================== */
+
     .detalle-descripcion {
       max-width: 760px;
 
       margin: 0 auto;
 
       font-family:
-        'Scriptorial',
-        cursive;
+        'Adelia',
+        serif;
 
       font-size: 20px;
 
@@ -806,7 +793,6 @@
         translateY(-4px);
     }
 
-
     /* =====================================================
        TABLET
     ===================================================== */
@@ -819,7 +805,6 @@
       }
 
     }
-
 
     /* =====================================================
        MÓVIL
@@ -897,7 +882,6 @@
 
     }
 
-
     /* =====================================================
        ACCESIBILIDAD
     ===================================================== */
@@ -920,9 +904,7 @@
 
 </head>
 
-
 <body>
-
 
   <!-- =====================================================
        ICONOS SUPERIORES
@@ -938,7 +920,6 @@
 
     </a>
 
-
     <a href="formulario.html">
 
       <img
@@ -949,13 +930,11 @@
 
   </div>
 
-
   <!-- =====================================================
        CONTENIDO
   ===================================================== -->
 
   <main class="contenedor-principal">
-
 
     <!-- LOGO -->
 
@@ -963,7 +942,6 @@
       src="imagenes/logo2.png"
       alt="Tayta Inti"
       class="logo2">
-
 
     <!-- TÍTULO -->
 
@@ -981,14 +959,12 @@
 
     </div>
 
-
     <!-- PRODUCTOS -->
 
     <div
       class="productos"
       id="productos">
     </div>
-
 
     <!-- DETALLE DEL PRODUCTO -->
 
@@ -1003,21 +979,17 @@
         class="detalle-imagen"
         id="detalle-imagen">
 
-
       <h2
         class="detalle-nombre"
         id="detalle-nombre">
       </h2>
 
-
       <div class="detalle-linea"></div>
-
 
       <p
         class="detalle-descripcion"
         id="detalle-descripcion">
       </p>
-
 
       <button
         class="volver-productos"
@@ -1030,9 +1002,7 @@
 
     </section>
 
-
   </main>
-
 
   <script>
 
@@ -1049,7 +1019,6 @@
           "Maca Root Powder is traditionally harvested from the Peruvian Andes. It is valued for its earthy flavor, nutritional properties, and use in natural food, wellness, and botanical formulations."
       },
 
-
       {
         nombre:
           "Guayusa Leaf Powder (Ilex guayusa)",
@@ -1060,7 +1029,6 @@
         descripcion:
           "Guayusa Leaf Powder comes from the Amazonian guayusa plant. It is traditionally used in herbal preparations and is appreciated for its natural botanical properties and distinctive character."
       },
-
 
       {
         nombre:
@@ -1073,7 +1041,6 @@
           "Acai Berry Powder is obtained from the fruit of the acai palm, native to the Amazon. It is rich in naturally occurring pigments and is widely used in nutritional, cosmetic, and botanical applications."
       },
 
-
       {
         nombre:
           "Garlic Powder (Allium sativum)",
@@ -1084,7 +1051,6 @@
         descripcion:
           "Garlic Powder is made from carefully dried garlic bulbs. It offers the characteristic aroma and flavor of garlic and is commonly used in culinary, nutritional, and natural product formulations."
       },
-
 
       {
         nombre:
@@ -1097,7 +1063,6 @@
           "Ginger Powder is produced from dried ginger root. It is appreciated for its warm, spicy aroma and is commonly used in food, herbal preparations, and natural wellness products."
       },
 
-
       {
         nombre:
           "Arrowroot Powder (Maranta arundinacea)",
@@ -1108,7 +1073,6 @@
         descripcion:
           "Arrowroot Powder is a fine botanical powder traditionally used as a natural thickener. Its smooth texture makes it suitable for culinary, cosmetic, and natural formulation applications."
       },
-
 
       {
         nombre:
@@ -1121,7 +1085,6 @@
           "Graviola Leaf Powder is obtained from the leaves of Annona muricata. It is used in traditional botanical preparations and is valued for its natural plant compounds and characteristic herbal profile."
       },
 
-
       {
         nombre:
           "Sacha Jergón Powder (Dracontium loretense)",
@@ -1132,7 +1095,6 @@
         descripcion:
           "Sacha Jergón is an Amazonian botanical traditionally recognized in local herbal practices. Its powdered form is used in traditional preparations and natural botanical applications."
       },
-
 
       {
         nombre:
@@ -1145,7 +1107,6 @@
           "Algarrobo Powder comes from the pods of the algarrobo tree, traditionally associated with the dry forests of northern Peru. It has a naturally sweet, earthy character and is used in food and nutritional preparations."
       },
 
-
       {
         nombre:
           "Cat's Claw Powder (Uncaria tomentosa)",
@@ -1156,7 +1117,6 @@
         descripcion:
           "Cat's Claw Powder is obtained from the traditional Amazonian botanical known as Uña de Gato. It is used in herbal preparations and natural botanical formulations."
       },
-
 
       {
         nombre:
@@ -1169,7 +1129,6 @@
           "Yacon Powder is made from the yacon root, a plant native to the Andes. It is appreciated for its naturally sweet profile and is used in nutritional, culinary, and botanical applications."
       },
 
-
       {
         nombre:
           "Sweet Potato Powder (Ipomoea batatas)",
@@ -1181,7 +1140,6 @@
           "Sweet Potato Powder is produced from carefully dried sweet potatoes. It provides a naturally earthy flavor and is suitable for culinary, nutritional, and natural food formulations."
       },
 
-
       {
         nombre:
           "Cacao Powder (Theobroma cacao)",
@@ -1192,7 +1150,6 @@
         descripcion:
           "Cacao Powder is obtained from carefully processed cacao beans. It has a rich chocolate aroma and is commonly used in food, nutritional products, cosmetic preparations, and botanical formulations."
       },
-
 
       {
         nombre:
@@ -1206,7 +1163,6 @@
       }
 
     ];
-
 
     const contenedor =
       document.getElementById('productos');
@@ -1231,7 +1187,6 @@
 
     const subtituloSeccion =
       document.getElementById('subtitulo-seccion');
-
 
     /* =====================================================
        CREAR TARJETAS
@@ -1268,7 +1223,6 @@
 
     });
 
-
     /* =====================================================
        ABRIR DETALLE
     ===================================================== */
@@ -1285,7 +1239,6 @@
         const productoSeleccionado =
           productos[indice];
 
-
         detalleImagen.src =
           productoSeleccionado.imagen;
 
@@ -1298,18 +1251,15 @@
         detalleDescripcion.textContent =
           productoSeleccionado.descripcion;
 
-
         contenedor.style.display = 'none';
 
         detalle.classList.add('activo');
-
 
         tituloSeccion.textContent =
           'Product Details';
 
         subtituloSeccion.textContent =
           'Discover our natural Peruvian botanical powders';
-
 
         window.scrollTo({
           top: 0,
@@ -1319,7 +1269,6 @@
       });
 
     });
-
 
     /* =====================================================
        VOLVER A LA LISTA
@@ -1331,13 +1280,11 @@
 
       contenedor.style.display = 'grid';
 
-
       tituloSeccion.textContent =
         'Powders';
 
       subtituloSeccion.textContent =
         'Natural Peruvian botanical powders';
-
 
       window.scrollTo({
         top: 0,
@@ -1347,7 +1294,6 @@
     });
 
   </script>
-
 
 </body>
 
