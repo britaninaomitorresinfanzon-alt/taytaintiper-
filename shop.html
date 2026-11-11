@@ -1,35 +1,82 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Extracts</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Extracts | Tayta Inti</title>
+
   <style>
-    /* ===== ESTILOS GENERALES ===== */
+    @font-face {
+      font-family: 'Adelia';
+      src: url('fuentes/Adelia.otf') format('opentype');
+    }
+
+    @font-face {
+      font-family: 'Scriptorial';
+      src: url('fuentes/Scriptorial.ttf') format('truetype');
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
+      min-height: 100vh;
+      width: 100%;
       font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+      background: #000;
+    }
+
+    /* ===== FONDO ANIMADO ===== */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
       background-image: url('imagenes/extracts.png');
       background-size: cover;
       background-position: center;
-      height: 100vh;
-      width: 100vw;
-      overflow: hidden;
+      z-index: -2;
+      animation: zoomFondo 25s ease-in-out infinite alternate;
     }
 
-    /* ===== ICONOS SUPERIORES DERECHA ===== */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    @keyframes zoomFondo {
+      from {
+        transform: scale(1);
+      }
+
+      to {
+        transform: scale(1.12);
+      }
+    }
+
+    /* ===== ICONOS SUPERIORES ===== */
     .iconos-superiores {
-      position: absolute;
+      position: fixed;
       top: 20px;
-      right: 20px; /* ← Ambos a la derecha */
+      right: 20px;
       display: flex;
-      gap: 15px;   /* espacio entre íconos */
-      z-index: 3;
+      gap: 15px;
+      z-index: 10;
     }
 
     .iconos-superiores img {
       width: 45px;
       height: 45px;
+      object-fit: contain;
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -41,66 +88,368 @@
     /* ===== LOGO ===== */
     .logo2 {
       position: absolute;
-      top: 40px;
+      top: 35px;
       left: 50%;
       transform: translateX(-50%);
       height: 100px;
-      z-index: 2;
+      width: auto;
+      object-fit: contain;
+      z-index: 5;
     }
 
     /* ===== CONTENEDOR PRINCIPAL ===== */
     .contenedor-principal {
-      position: absolute;
-      top: 0;
-      left: 0;
+      position: relative;
+      min-height: 100vh;
       width: 100%;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.6);
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      padding: 165px 30px 60px;
+    }
+
+    /* ===== TITULO Y SUBTITULO ===== */
+    .titulo-principal {
+      font-family: 'Adelia', serif;
+      font-size: 38px;
+      font-weight: normal;
+      text-align: center;
+      margin: 15px 0 10px;
+      color: white;
+      animation: aparecer 1s ease forwards;
+    }
+
+    .subtitulo-principal {
+      font-family: 'Scriptorial', cursive;
+      font-size: 23px;
+      text-align: center;
+      margin: 0 0 45px;
+      color: rgba(255, 255, 255, 0.9);
+      animation: aparecer 1.2s ease forwards;
     }
 
     /* ===== PRODUCTOS ===== */
     .productos {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 30px;
-      padding-top: 120px;
+      justify-items: center;
+      align-items: stretch;
     }
 
     .product {
-      background-color: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px;
+      position: relative;
+      width: 100%;
+      max-width: 300px;
+      min-height: 290px;
       padding: 20px;
-      width: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
       text-decoration: none;
       color: white;
+      cursor: pointer;
+      overflow: hidden;
+
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      animation: entrada 0.8s ease forwards;
+      transition: transform 0.4s, box-shadow 0.4s;
     }
 
     .product:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
     }
 
     .product h2 {
-      font-size: 18px;
+      position: relative;
+      z-index: 2;
+      font-family: 'Adelia', serif;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 1.5;
+      margin: 10px 0;
+      transition: opacity 0.4s;
+    }
+
+    .product .imagen-producto {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 20px;
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 0.5s, transform 0.5s;
+      z-index: 1;
+    }
+
+    .product:hover .imagen-producto {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .product:hover h2 {
+      opacity: 0;
+    }
+
+    .product .imagen-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      transition: opacity 0.4s;
+      z-index: 1;
+    }
+
+    .product:hover .imagen-overlay {
+      opacity: 1;
+    }
+
+    .product .linea {
+      position: absolute;
+      bottom: 22px;
+      width: 45px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.8);
+      transition: width 0.4s;
+      z-index: 2;
+    }
+
+    .product:hover .linea {
+      width: 100px;
+    }
+
+    /* ===== EFECTO DE BRILLO ===== */
+    .product::after {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 50%;
+      height: 300%;
+      background: rgba(255, 255, 255, 0.12);
+      transform: rotate(25deg);
+      transition: left 0.7s;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .product:hover::after {
+      left: 150%;
+    }
+
+    /* ===== DETALLE DEL PRODUCTO ===== */
+    .detalle-producto {
+      display: none;
+      width: 100%;
+      max-width: 1000px;
+      margin: 15px auto 0;
+      align-items: center;
+      justify-content: center;
+      gap: 55px;
+      animation: aparecer 0.7s ease forwards;
+    }
+
+    .detalle-producto.activo {
+      display: flex;
+    }
+
+    .detalle-imagen {
+      width: 42%;
+      max-width: 420px;
+      height: 400px;
+      object-fit: contain;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      backdrop-filter: blur(5px);
+    }
+
+    .detalle-contenido {
+      width: 48%;
+      max-width: 450px;
+      text-align: left;
+    }
+
+    .detalle-contenido h2 {
+      font-family: 'Adelia', serif;
+      font-size: 29px;
+      font-weight: normal;
+      line-height: 1.5;
+      margin: 0 0 20px;
+    }
+
+    .detalle-linea {
+      width: 70px;
+      height: 1px;
+      background: white;
+      margin-bottom: 25px;
+    }
+
+    .detalle-contenido p {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 30px;
+    }
+
+    /* ===== BOTON REGRESAR ===== */
+    .btn-regresar {
+      display: inline-block;
+      padding: 12px 25px;
       color: white;
-      margin: 10px 0 5px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 4px;
+      font-family: 'Scriptorial', cursive;
+      font-size: 18px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .btn-regresar:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
+
+    /* ===== ANIMACIONES ===== */
+    @keyframes entrada {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===== TABLETS ===== */
+    @media (max-width: 900px) {
+      .productos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .detalle-producto {
+        gap: 30px;
+      }
+
+      .detalle-imagen {
+        height: 330px;
+      }
+    }
+
+    /* ===== MOVILES ===== */
+    @media (max-width: 600px) {
+      .logo2 {
+        top: 25px;
+        height: 75px;
+      }
+
+      .iconos-superiores {
+        top: 15px;
+        right: 12px;
+        gap: 8px;
+      }
+
+      .iconos-superiores img {
+        width: 35px;
+        height: 35px;
+      }
+
+      .contenedor-principal {
+        padding: 130px 20px 40px;
+      }
+
+      .titulo-principal {
+        font-size: 29px;
+      }
+
+      .subtitulo-principal {
+        font-size: 19px;
+        margin-bottom: 30px;
+      }
+
+      .productos {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .product {
+        max-width: 330px;
+        min-height: 250px;
+      }
+
+      .detalle-producto {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .detalle-imagen {
+        width: 100%;
+        max-width: 330px;
+        height: 280px;
+      }
+
+      .detalle-contenido {
+        width: 100%;
+        text-align: center;
+      }
+
+      .detalle-contenido h2 {
+        font-size: 24px;
+      }
+
+      .detalle-linea {
+        margin: 0 auto 20px;
+      }
+
+      .detalle-contenido p {
+        font-size: 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 🔹 ICONOS SUPERIORES DERECHA -->
+  <!-- ICONOS SUPERIORES -->
   <div class="iconos-superiores">
     <a href="index.html">
       <img src="imagenes/Home.jpg" alt="Home">
@@ -111,29 +460,164 @@
     </a>
   </div>
 
-  <!-- 🔹 LOGO -->
-  <img src="imagenes/logo2.png" alt="Logo" class="logo2" />
+  <!-- LOGO -->
+  <img src="imagenes/logo2.png" alt="Tayta Inti Logo" class="logo2">
 
-  <!-- 🔹 FONDO OSCURO -->
-  <div class="contenedor-principal">
+  <!-- CONTENIDO PRINCIPAL -->
+  <main class="contenedor-principal">
+
+    <h1 class="titulo-principal" id="tituloPrincipal">
+      Extracts
+    </h1>
+
+    <p class="subtitulo-principal" id="subtituloPrincipal">
+      Natural botanical extracts from Peru
+    </p>
+
+    <!-- LISTA DE PRODUCTOS -->
     <div class="productos" id="productos"></div>
-  </div>
+
+    <!-- DETALLE DEL PRODUCTO -->
+    <section class="detalle-producto" id="detalleProducto">
+
+      <img
+        src=""
+        alt="Graviola Leaf Extract"
+        class="detalle-imagen"
+        id="detalleImagen"
+      >
+
+      <div class="detalle-contenido">
+
+        <h2 id="detalleNombre"></h2>
+
+        <div class="detalle-linea"></div>
+
+        <p id="detalleDescripcion"></p>
+
+        <button class="btn-regresar" onclick="volverProductos()">
+          ← Back to Extracts
+        </button>
+
+      </div>
+    </section>
+
+  </main>
 
   <script>
-    const producto = {
-      nombre: "Graviola Leaf Extract (Annona muricata)",
-      enlace: "descripcion.html"
-    };
+    /* ===== PRODUCTOS ===== */
 
-    const contenedor = document.getElementById('productos');
+    const productos = [
+      {
+        nombre: "Graviola Leaf Extract (Annona muricata)",
 
-    contenedor.innerHTML = `
-      <a href="${producto.enlace}" class="product">
+        imagen: "imagenes/graviola.jpg",
+
+        descripcion:
+          "Graviola Leaf Extract is derived from the leaves of Annona muricata, a tropical tree native to the Americas and widely found in the Peruvian Amazon. This botanical extract is valued for its natural plant compounds and traditional use in Amazonian preparations. It is suitable for botanical, cosmetic, and natural product formulations."
+      }
+    ];
+
+    const contenedor = document.getElementById("productos");
+
+    const tituloPrincipal = document.getElementById("tituloPrincipal");
+
+    const subtituloPrincipal = document.getElementById("subtituloPrincipal");
+
+    const detalleProducto = document.getElementById("detalleProducto");
+
+    const detalleImagen = document.getElementById("detalleImagen");
+
+    const detalleNombre = document.getElementById("detalleNombre");
+
+    const detalleDescripcion = document.getElementById("detalleDescripcion");
+
+
+    /* ===== CREAR TARJETAS ===== */
+
+    productos.forEach((producto, index) => {
+
+      const tarjeta = document.createElement("div");
+
+      tarjeta.className = "product";
+
+      tarjeta.style.animationDelay = `${index * 0.15}s`;
+
+      tarjeta.innerHTML = `
         <h2>${producto.nombre}</h2>
-      </a>
-    `;
+
+        <img
+          class="imagen-producto"
+          src="${producto.imagen}"
+          alt="${producto.nombre}"
+        >
+
+        <div class="imagen-overlay"></div>
+
+        <div class="linea"></div>
+      `;
+
+      tarjeta.addEventListener("click", () => {
+        mostrarDetalle(index);
+      });
+
+      contenedor.appendChild(tarjeta);
+
+    });
+
+
+    /* ===== MOSTRAR DETALLE ===== */
+
+    function mostrarDetalle(index) {
+
+      const producto = productos[index];
+
+      detalleImagen.src = producto.imagen;
+
+      detalleImagen.alt = producto.nombre;
+
+      detalleNombre.textContent = producto.nombre;
+
+      detalleDescripcion.textContent = producto.descripcion;
+
+      contenedor.style.display = "none";
+
+      detalleProducto.classList.add("activo");
+
+      tituloPrincipal.textContent = "Product Details";
+
+      subtituloPrincipal.textContent =
+        "Discover our natural botanical extracts";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ===== VOLVER A PRODUCTOS ===== */
+
+    function volverProductos() {
+
+      detalleProducto.classList.remove("activo");
+
+      contenedor.style.display = "grid";
+
+      tituloPrincipal.textContent = "Extracts";
+
+      subtituloPrincipal.textContent =
+        "Natural botanical extracts from Peru";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
   </script>
 
 </body>
 </html>
-
