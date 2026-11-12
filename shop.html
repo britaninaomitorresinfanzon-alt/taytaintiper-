@@ -1,14 +1,24 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
+
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Extracts | Tayta Inti</title>
 
   <style>
+
+    /* =====================================================
+       FUENTES
+    ===================================================== */
+
     @font-face {
       font-family: 'Adelia';
       src: url('fuentes/Adelia.otf') format('opentype');
@@ -19,629 +29,1080 @@
       src: url('fuentes/Scriptorial.ttf') format('truetype');
     }
 
+    /* =====================================================
+       GENERAL
+    ===================================================== */
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
       min-height: 100vh;
-      width: 100%;
       font-family: Arial, sans-serif;
       color: white;
-      overflow-x: hidden;
       background: #000;
+      overflow-x: hidden;
     }
 
-    /* ===== FONDO ANIMADO ===== */
+    /* =====================================================
+       FONDO
+    ===================================================== */
+
     body::before {
       content: "";
       position: fixed;
-      inset: 0;
-      background-image: url('imagenes/extracts.png');
+      inset: -5%;
+      z-index: -5;
+
+      background-image:
+        url('imagenes/extracts.png');
+
       background-size: cover;
       background-position: center;
-      z-index: -2;
-      animation: zoomFondo 25s ease-in-out infinite alternate;
+
+      transform: scale(1.05);
+
+      animation:
+        fondoMovimiento 15s ease-in-out infinite alternate;
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: -1;
-    }
+    @keyframes fondoMovimiento {
 
-    @keyframes zoomFondo {
       from {
-        transform: scale(1);
+        transform: scale(1.05);
       }
 
       to {
         transform: scale(1.12);
       }
+
     }
 
-    /* ===== ICONOS CIRCULARES SUPERIORES ===== */
-    .iconos-superiores {
+    /* =====================================================
+       CAPA OSCURA
+    ===================================================== */
+
+    body::after {
+      content: "";
       position: fixed;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      gap: 15px;
-      z-index: 10;
+      inset: 0;
+      z-index: -4;
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,.78),
+          rgba(0,0,0,.45),
+          rgba(0,0,0,.82)
+        );
     }
 
-    .iconos-superiores a {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.75);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    /* =====================================================
+       CONTENEDOR
+    ===================================================== */
 
-    .iconos-superiores a:hover {
-      transform: scale(1.1);
-      box-shadow: 0 5px 16px rgba(0, 0, 0, 0.9);
-    }
-
-    .iconos-superiores img {
-      width: 75%;
-      height: 75%;
-      object-fit: contain;
-      border-radius: 0;
-      display: block;
-    }
-
-    /* ===== LOGO ===== */
-    .logo2 {
-      position: absolute;
-      top: 35px;
-      left: 50%;
-      transform: translateX(-50%);
-      height: 100px;
-      width: auto;
-      object-fit: contain;
-      z-index: 5;
-    }
-
-    /* ===== CONTENEDOR PRINCIPAL ===== */
     .contenedor-principal {
-      position: relative;
       min-height: 100vh;
-      width: 100%;
+
+      padding:
+        35px 30px 80px;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,255,255,.06),
+          transparent 50%
+        );
+    }
+
+    /* =====================================================
+       ICONOS SUPERIORES
+    ===================================================== */
+
+    .top-icons {
+      position: fixed;
+
+      top: 22px;
+      right: 30px;
+
       display: flex;
-      flex-direction: column;
+      gap: 14px;
+
+      z-index: 2000;
+    }
+
+    .top-icons a {
+      width: 45px;
+      height: 45px;
+
+      display: flex;
       align-items: center;
-      padding: 165px 30px 60px;
+      justify-content: center;
+
+      border:
+        1px solid
+        rgba(255,255,255,.45);
+
+      border-radius: 50%;
+
+      background:
+        rgba(0,0,0,.25);
+
+      backdrop-filter:
+        blur(6px);
+
+      transition:
+        transform .35s ease,
+        background .35s ease;
     }
 
-    /* ===== TITULO Y SUBTITULO ===== */
-    .titulo-principal {
-      font-family: 'Adelia', serif;
-      font-size: 38px;
+    .top-icons img {
+      width: 29px;
+      height: 29px;
+
+      object-fit: contain;
+
+      filter:
+        brightness(0)
+        invert(1);
+    }
+
+    .top-icons a:hover {
+      transform:
+        translateY(-4px)
+        scale(1.08);
+
+      background:
+        rgba(255,255,255,.16);
+    }
+
+    /* =====================================================
+       LOGO
+    ===================================================== */
+
+    .logo2 {
+      display: block;
+
+      width: 220px;
+      max-width: 65%;
+
+      height: auto;
+
+      margin:
+        20px auto 15px;
+
+      filter:
+        drop-shadow(
+          0 5px 20px
+          rgba(0,0,0,.5)
+        );
+
+      animation:
+        logoEntrada 1.2s ease forwards;
+    }
+
+    @keyframes logoEntrada {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(-25px)
+          scale(.92);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0)
+          scale(1);
+      }
+
+    }
+
+    /* =====================================================
+       TÍTULO GENERAL
+    ===================================================== */
+
+    .titulo {
+      text-align: center;
+
+      margin-bottom: 45px;
+
+      animation:
+        aparecer 1s ease .4s both;
+    }
+
+    .titulo h1 {
+      font-family:
+        'Adelia',
+        serif;
+
+      font-size: 32px;
+
       font-weight: normal;
-      text-align: center;
-      margin: 15px 0 10px;
-      color: white;
-      animation: aparecer 1s ease forwards;
+
+      letter-spacing: 3px;
+
+      text-transform: uppercase;
+
+      text-shadow:
+        0 3px 12px
+        rgba(0,0,0,.8);
     }
 
-    .subtitulo-principal {
-      font-family: 'Scriptorial', cursive;
-      font-size: 23px;
-      text-align: center;
-      margin: 0 0 45px;
-      color: rgba(255, 255, 255, 0.9);
-      animation: aparecer 1.2s ease forwards;
+    .titulo-linea {
+      width: 70px;
+
+      height: 1px;
+
+      margin:
+        15px auto;
+
+      background:
+        rgba(255,255,255,.75);
     }
 
-    /* ===== PRODUCTOS ===== */
+    .titulo p {
+      font-family:
+        'Scriptorial',
+        cursive;
+
+      font-size: 17px;
+
+      letter-spacing: 1.5px;
+
+      color:
+        rgba(255,255,255,.85);
+    }
+
+    @keyframes aparecer {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(15px);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0);
+      }
+
+    }
+
+    /* =====================================================
+       PRODUCTOS
+    ===================================================== */
+
     .productos {
-      width: 100%;
-      max-width: 1100px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 25px;
+
       justify-items: center;
-      align-items: stretch;
+
+      max-width: 1150px;
+
+      margin: 0 auto;
     }
+
+    /* =====================================================
+       BOTÓN PRODUCTO
+    ===================================================== */
 
     .product {
       position: relative;
+
       width: 100%;
-      max-width: 300px;
-      min-height: 290px;
-      padding: 20px;
+
+      max-width: 310px;
+
+      min-height: 135px;
+
+      padding:
+        30px 25px;
+
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+
       align-items: center;
+
+      justify-content: center;
+
       text-align: center;
+
       text-decoration: none;
+
       color: white;
-      cursor: pointer;
+
       overflow: hidden;
 
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
+      border:
+        1px solid
+        rgba(255,255,255,.35);
 
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+
+      background:
+        rgba(0,0,0,.30);
+
+      backdrop-filter:
+        blur(8px);
+
+      box-shadow:
+        0 8px 30px
+        rgba(0,0,0,.30);
+
+      transition:
+        transform .5s ease,
+        box-shadow .5s ease,
+        border-color .5s ease;
+
       opacity: 0;
-      animation: entrada 0.8s ease forwards;
-      transition: transform 0.4s, box-shadow 0.4s;
+
+      animation:
+        tarjetaEntrada .8s ease forwards;
     }
 
-    .product:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    /* =====================================================
+       ANIMACIÓN DE ENTRADA
+    ===================================================== */
+
+    .product:nth-child(1) {
+      animation-delay: .8s;
     }
 
-    .product h2 {
-      position: relative;
-      z-index: 2;
-      font-family: 'Adelia', serif;
-      font-size: 20px;
-      font-weight: normal;
-      line-height: 1.5;
-      margin: 10px 0;
-      transition: opacity 0.4s;
+    @keyframes tarjetaEntrada {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+
+        transform:
+          translateY(0);
+      }
+
     }
 
-    .product .imagen-producto {
+    /* =====================================================
+       IMAGEN
+    ===================================================== */
+
+    .product img {
       position: absolute;
+
       inset: 0;
+
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      padding: 20px;
+
+      object-fit: cover;
+
       opacity: 0;
-      transform: scale(0.85);
-      transition: opacity 0.5s, transform 0.5s;
+
+      transform:
+        scale(1.15);
+
+      transition:
+        opacity .5s ease,
+        transform .8s ease;
+
       z-index: 1;
     }
 
-    .product:hover .imagen-producto {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .product:hover h2 {
-      opacity: 0;
-    }
+    /* =====================================================
+       CAPA OSCURA SOBRE LA IMAGEN
+    ===================================================== */
 
     .product .imagen-overlay {
       position: absolute;
+
       inset: 0;
-      background: rgba(0, 0, 0, 0.25);
+
+      background:
+        rgba(0,0,0,.45);
+
       opacity: 0;
-      transition: opacity 0.4s;
-      z-index: 1;
+
+      transition:
+        opacity .5s ease;
+
+      z-index: 2;
+    }
+
+    /* =====================================================
+       NOMBRE EN LAS TARJETAS
+    ===================================================== */
+
+    .product h2 {
+      position: relative;
+
+      z-index: 5;
+
+      font-family:
+        'Adelia',
+        serif;
+
+      font-size: 18px;
+
+      font-weight: normal;
+
+      line-height: 1.45;
+
+      letter-spacing: 1.2px;
+
+      text-shadow:
+        0 2px 8px
+        rgba(0,0,0,1);
+
+      transition:
+        transform .4s ease,
+        letter-spacing .4s ease;
+    }
+
+    /* =====================================================
+       HOVER
+    ===================================================== */
+
+    .product:hover {
+      transform:
+        translateY(-10px)
+        scale(1.025);
+
+      border-color:
+        rgba(255,255,255,.9);
+
+      box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.6);
+    }
+
+    .product:hover img {
+      opacity: 1;
+
+      transform:
+        scale(1);
     }
 
     .product:hover .imagen-overlay {
       opacity: 1;
     }
 
-    .product .linea {
-      position: absolute;
-      bottom: 22px;
-      width: 45px;
-      height: 1px;
-      background: rgba(255, 255, 255, 0.8);
-      transition: width 0.4s;
-      z-index: 2;
+    .product:hover h2 {
+      transform:
+        scale(1.04);
+
+      letter-spacing:
+        1.5px;
     }
 
-    .product:hover .linea {
-      width: 100px;
-    }
+    /* =====================================================
+       EFECTO BRILLO
+    ===================================================== */
 
-    /* ===== EFECTO DE BRILLO ===== */
     .product::after {
       content: "";
+
       position: absolute;
-      top: -100%;
-      left: -100%;
-      width: 50%;
-      height: 300%;
-      background: rgba(255, 255, 255, 0.12);
-      transform: rotate(25deg);
-      transition: left 0.7s;
-      z-index: 3;
-      pointer-events: none;
+
+      top: 0;
+      left: -120%;
+
+      width: 60%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          transparent,
+          rgba(255,255,255,.18),
+          transparent
+        );
+
+      transform:
+        skewX(-20deg);
+
+      transition:
+        left .8s ease;
+
+      z-index: 6;
     }
 
     .product:hover::after {
-      left: 150%;
+      left: 140%;
     }
 
-    /* ===== DETALLE DEL PRODUCTO ===== */
+    /* =====================================================
+       LÍNEA DECORATIVA
+    ===================================================== */
+
+    .product .linea {
+      position: absolute;
+
+      bottom: 12px;
+      left: 50%;
+
+      width: 0;
+      height: 1px;
+
+      transform:
+        translateX(-50%);
+
+      background:
+        white;
+
+      transition:
+        width .4s ease;
+
+      z-index: 7;
+    }
+
+    .product:hover .linea {
+      width: 50px;
+    }
+
+    /* =====================================================
+       DETALLE DEL PRODUCTO
+    ===================================================== */
+
     .detalle-producto {
       display: none;
-      width: 100%;
-      max-width: 1000px;
-      margin: 15px auto 0;
-      align-items: center;
-      justify-content: center;
-      gap: 55px;
-      animation: aparecer 0.7s ease forwards;
+
+      max-width: 950px;
+
+      margin: 0 auto;
+
+      text-align: center;
+
+      animation:
+        detalleEntrada .8s ease both;
     }
 
     .detalle-producto.activo {
-      display: flex;
+      display: block;
+    }
+
+    @keyframes detalleEntrada {
+
+      from {
+        opacity: 0;
+        transform:
+          translateY(25px);
+      }
+
+      to {
+        opacity: 1;
+        transform:
+          translateY(0);
+      }
+
     }
 
     .detalle-imagen {
-      width: 42%;
-      max-width: 420px;
-      height: 400px;
+      display: block;
+
+      width: 100%;
+
+      max-width: 440px;
+
+      max-height: 430px;
+
       object-fit: contain;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 10px;
-      backdrop-filter: blur(5px);
+
+      margin: 0 auto 30px;
+
+      border-radius: 5px;
+
+      filter:
+        drop-shadow(
+          0 12px 30px
+          rgba(0,0,0,.65)
+        );
     }
 
-    .detalle-contenido {
-      width: 48%;
-      max-width: 450px;
-      text-align: left;
-    }
+    /* =====================================================
+       NOMBRE DENTRO DEL DETALLE
+    ===================================================== */
 
-    .detalle-contenido h2 {
-      font-family: 'Adelia', serif;
-      font-size: 29px;
+    .detalle-nombre {
+      font-family:
+        'Scriptorial',
+        cursive;
+
+      font-size: 30px;
+
       font-weight: normal;
+
       line-height: 1.5;
-      margin: 0 0 20px;
+
+      letter-spacing: 2px;
+
+      text-shadow:
+        0 3px 12px
+        rgba(0,0,0,.9);
+
+      margin-bottom: 20px;
     }
 
     .detalle-linea {
-      width: 70px;
+      width: 80px;
+
       height: 1px;
-      background: white;
-      margin-bottom: 25px;
+
+      background:
+        rgba(255,255,255,.8);
+
+      margin: 0 auto 25px;
     }
 
-    .detalle-contenido p {
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1.9;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 30px;
+    /* =====================================================
+       DESCRIPCIÓN DENTRO DEL DETALLE
+    ===================================================== */
+
+    .detalle-descripcion {
+      max-width: 760px;
+
+      margin: 0 auto;
+
+      font-family:
+        'Adelia',
+        serif;
+
+      font-size: 20px;
+
+      line-height: 1.8;
+
+      letter-spacing: .5px;
+
+      color:
+        rgba(255,255,255,.9);
+
+      text-shadow:
+        0 2px 8px
+        rgba(0,0,0,.8);
     }
 
-    /* ===== BOTON REGRESAR ===== */
-    .btn-regresar {
+    .volver-productos {
       display: inline-block;
-      padding: 12px 25px;
+
+      margin-top: 40px;
+
+      padding: 14px 28px;
+
+      border:
+        1px solid
+        rgba(255,255,255,.55);
+
+      border-radius: 5px;
+
+      background:
+        rgba(0,0,0,.35);
+
       color: white;
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      border-radius: 4px;
-      font-family: 'Scriptorial', cursive;
-      font-size: 18px;
+
+      font-family:
+        'Adelia',
+        serif;
+
+      font-size: 15px;
+
+      letter-spacing: 1px;
+
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
+
+      transition:
+        background .35s ease,
+        transform .35s ease,
+        border-color .35s ease;
     }
 
-    .btn-regresar:hover {
-      background: rgba(255, 255, 255, 0.25);
-      transform: translateY(-3px);
+    .volver-productos:hover {
+      background:
+        rgba(255,255,255,.15);
+
+      border-color:
+        white;
+
+      transform:
+        translateY(-4px);
     }
 
-    /* ===== ANIMACIONES ===== */
-    @keyframes entrada {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
+    /* =====================================================
+       TABLET
+    ===================================================== */
 
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ===== TABLETS ===== */
     @media (max-width: 900px) {
+
       .productos {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+          repeat(2, 1fr);
       }
 
-      .detalle-producto {
-        gap: 30px;
-      }
-
-      .detalle-imagen {
-        height: 330px;
-      }
     }
 
-    /* ===== MOVILES ===== */
+    /* =====================================================
+       MÓVIL
+    ===================================================== */
+
     @media (max-width: 600px) {
-      .logo2 {
-        top: 25px;
-        height: 75px;
+
+      .contenedor-principal {
+        padding:
+          25px 15px 60px;
       }
 
-      .iconos-superiores {
-        top: 15px;
-        right: 12px;
+      .top-icons {
+        top: 14px;
+        right: 15px;
         gap: 8px;
       }
 
-      .iconos-superiores a {
+      .top-icons a {
         width: 38px;
         height: 38px;
       }
 
-      .contenedor-principal {
-        padding: 130px 20px 40px;
+      .top-icons img {
+        width: 24px;
+        height: 24px;
       }
 
-      .titulo-principal {
-        font-size: 29px;
+      .logo2 {
+        width: 160px;
+        margin-top: 30px;
       }
 
-      .subtitulo-principal {
-        font-size: 19px;
+      .titulo {
         margin-bottom: 30px;
+      }
+
+      .titulo h1 {
+        font-size: 23px;
+        letter-spacing: 2px;
+      }
+
+      .titulo p {
+        font-size: 15px;
       }
 
       .productos {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 13px;
       }
 
       .product {
-        max-width: 330px;
-        min-height: 250px;
+        max-width: 340px;
+        min-height: 100px;
+        padding: 20px;
       }
 
-      .detalle-producto {
-        flex-direction: column;
-        gap: 25px;
+      .product h2 {
+        font-size: 16px;
+      }
+
+      .detalle-nombre {
+        font-size: 23px;
+        letter-spacing: 1px;
+      }
+
+      .detalle-descripcion {
+        font-size: 17px;
+        line-height: 1.7;
       }
 
       .detalle-imagen {
-        width: 100%;
-        max-width: 330px;
-        height: 280px;
+        max-width: 90%;
       }
 
-      .detalle-contenido {
-        width: 100%;
-        text-align: center;
-      }
-
-      .detalle-contenido h2 {
-        font-size: 24px;
-      }
-
-      .detalle-linea {
-        margin: 0 auto 20px;
-      }
-
-      .detalle-contenido p {
-        font-size: 15px;
-      }
     }
 
+    /* =====================================================
+       ACCESIBILIDAD
+    ===================================================== */
+
     @media (prefers-reduced-motion: reduce) {
+
       *,
       *::before,
       *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
+
+        animation: none !important;
+
+        transition: none !important;
+
       }
+
     }
+
   </style>
+
 </head>
 
 <body>
 
-  <!-- ICONOS SUPERIORES CIRCULARES -->
-  <div class="iconos-superiores">
+  <!-- =====================================================
+       ICONOS SUPERIORES
+  ===================================================== -->
 
-    <a href="index.html" aria-label="Home">
-      <img src="imagenes/Home.jpg" alt="Home">
+  <div class="top-icons">
+
+    <a href="index.html">
+
+      <img
+        src="imagenes/Home.jpg"
+        alt="Home">
+
     </a>
 
-    <a href="formulario.html" aria-label="Carrito">
-      <img src="imagenes/Carrito.png" alt="Carrito">
+    <a href="formulario.html">
+
+      <img
+        src="imagenes/Carrito.png"
+        alt="Carrito">
+
     </a>
 
   </div>
 
-  <!-- LOGO -->
-  <img
-    src="imagenes/logo2.png"
-    alt="Tayta Inti Logo"
-    class="logo2"
-  >
+  <!-- =====================================================
+       CONTENIDO
+  ===================================================== -->
 
-  <!-- CONTENIDO PRINCIPAL -->
   <main class="contenedor-principal">
 
-    <h1 class="titulo-principal" id="tituloPrincipal">
-      Extracts
-    </h1>
+    <!-- LOGO -->
 
-    <p class="subtitulo-principal" id="subtituloPrincipal">
-      Natural botanical extracts from Peru
-    </p>
+    <img
+      src="imagenes/logo2.png"
+      alt="Tayta Inti"
+      class="logo2">
 
-    <!-- LISTA DE PRODUCTOS -->
-    <div class="productos" id="productos"></div>
+    <!-- TÍTULO GENERAL -->
+
+    <div class="titulo">
+
+      <h1 id="titulo-seccion">
+        Extracts
+      </h1>
+
+      <div class="titulo-linea"></div>
+
+      <p id="subtitulo-seccion">
+        Natural Peruvian botanical extracts
+      </p>
+
+    </div>
+
+    <!-- PRODUCTOS -->
+
+    <div
+      class="productos"
+      id="productos">
+    </div>
 
     <!-- DETALLE DEL PRODUCTO -->
-    <section class="detalle-producto" id="detalleProducto">
+
+    <section
+      class="detalle-producto"
+      id="detalle-producto"
+      aria-live="polite">
 
       <img
         src=""
-        alt="Graviola Leaf Extract"
+        alt=""
         class="detalle-imagen"
-        id="detalleImagen"
-      >
+        id="detalle-imagen">
 
-      <div class="detalle-contenido">
+      <h2
+        class="detalle-nombre"
+        id="detalle-nombre">
+      </h2>
 
-        <h2 id="detalleNombre"></h2>
+      <div class="detalle-linea"></div>
 
-        <div class="detalle-linea"></div>
+      <p
+        class="detalle-descripcion"
+        id="detalle-descripcion">
+      </p>
 
-        <p id="detalleDescripcion"></p>
+      <button
+        class="volver-productos"
+        id="volver-productos"
+        type="button">
 
-        <button
-          class="btn-regresar"
-          onclick="volverProductos()"
-        >
-          ← Back to Extracts
-        </button>
+        ← Back to Extracts
 
-      </div>
+      </button>
+
     </section>
 
   </main>
 
   <script>
-    /* ===== PRODUCTOS ===== */
 
     const productos = [
-      {
-        nombre: "Graviola Leaf Extract (Annona muricata)",
 
-        imagen: "imagenes/graviola.jpg",
+      {
+        nombre:
+          "Graviola Leaf Extract (Annona muricata)",
+
+        imagen:
+          "imagenes/graviola.jpg",
 
         descripcion:
           "Graviola Leaf Extract is derived from the leaves of Annona muricata, a tropical tree native to the Americas and widely found in the Peruvian Amazon. This botanical extract is valued for its natural plant compounds and traditional use in Amazonian preparations. It is suitable for botanical, cosmetic, and natural product formulations."
       }
+
     ];
 
-    const contenedor = document.getElementById("productos");
+    const contenedor =
+      document.getElementById('productos');
 
-    const tituloPrincipal = document.getElementById("tituloPrincipal");
+    const detalle =
+      document.getElementById('detalle-producto');
 
-    const subtituloPrincipal = document.getElementById("subtituloPrincipal");
+    const detalleImagen =
+      document.getElementById('detalle-imagen');
 
-    const detalleProducto = document.getElementById("detalleProducto");
+    const detalleNombre =
+      document.getElementById('detalle-nombre');
 
-    const detalleImagen = document.getElementById("detalleImagen");
+    const detalleDescripcion =
+      document.getElementById('detalle-descripcion');
 
-    const detalleNombre = document.getElementById("detalleNombre");
+    const volver =
+      document.getElementById('volver-productos');
 
-    const detalleDescripcion = document.getElementById("detalleDescripcion");
+    const tituloSeccion =
+      document.getElementById('titulo-seccion');
 
+    const subtituloSeccion =
+      document.getElementById('subtitulo-seccion');
 
-    /* ===== CREAR TARJETAS ===== */
+    /* =====================================================
+       CREAR TARJETAS
+    ===================================================== */
 
-    productos.forEach((producto, index) => {
+    productos.forEach((p, indice) => {
 
-      const tarjeta = document.createElement("div");
+      contenedor.innerHTML += `
 
-      tarjeta.className = "product";
+        <a
+          href="#"
+          class="product"
+          data-producto="${indice}">
 
-      tarjeta.style.animationDelay = `${index * 0.15}s`;
+          <img
+            src="${p.imagen}"
+            alt="${p.nombre}">
 
-      tarjeta.innerHTML = `
-        <h2>${producto.nombre}</h2>
+          <div
+            class="imagen-overlay">
+          </div>
 
-        <img
-          class="imagen-producto"
-          src="${producto.imagen}"
-          alt="${producto.nombre}"
-        >
+          <h2>
+            ${p.nombre}
+          </h2>
 
-        <div class="imagen-overlay"></div>
+          <div
+            class="linea">
+          </div>
 
-        <div class="linea"></div>
+        </a>
+
       `;
-
-      tarjeta.addEventListener("click", () => {
-        mostrarDetalle(index);
-      });
-
-      contenedor.appendChild(tarjeta);
 
     });
 
+    /* =====================================================
+       ABRIR DETALLE
+    ===================================================== */
 
-    /* ===== MOSTRAR DETALLE ===== */
+    document.querySelectorAll('.product').forEach(producto => {
 
-    function mostrarDetalle(index) {
+      producto.addEventListener('click', function(event) {
 
-      const producto = productos[index];
+        event.preventDefault();
 
-      detalleImagen.src = producto.imagen;
+        const indice =
+          this.getAttribute('data-producto');
 
-      detalleImagen.alt = producto.nombre;
+        const productoSeleccionado =
+          productos[indice];
 
-      detalleNombre.textContent = producto.nombre;
+        detalleImagen.src =
+          productoSeleccionado.imagen;
 
-      detalleDescripcion.textContent = producto.descripcion;
+        detalleImagen.alt =
+          productoSeleccionado.nombre;
 
-      contenedor.style.display = "none";
+        detalleNombre.textContent =
+          productoSeleccionado.nombre;
 
-      detalleProducto.classList.add("activo");
+        detalleDescripcion.textContent =
+          productoSeleccionado.descripcion;
 
-      tituloPrincipal.textContent = "Product Details";
+        contenedor.style.display = 'none';
 
-      subtituloPrincipal.textContent =
-        "Discover our natural botanical extracts";
+        detalle.classList.add('activo');
+
+        tituloSeccion.textContent =
+          'Product Details';
+
+        subtituloSeccion.textContent =
+          'Discover our natural Peruvian botanical extracts';
+
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+
+      });
+
+    });
+
+    /* =====================================================
+       VOLVER A LA LISTA
+    ===================================================== */
+
+    volver.addEventListener('click', function() {
+
+      detalle.classList.remove('activo');
+
+      contenedor.style.display = 'grid';
+
+      tituloSeccion.textContent =
+        'Extracts';
+
+      subtituloSeccion.textContent =
+        'Natural Peruvian botanical extracts';
 
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: 'smooth'
       });
 
-    }
-
-
-    /* ===== VOLVER A PRODUCTOS ===== */
-
-    function volverProductos() {
-
-      detalleProducto.classList.remove("activo");
-
-      contenedor.style.display = "grid";
-
-      tituloPrincipal.textContent = "Extracts";
-
-      subtituloPrincipal.textContent =
-        "Natural botanical extracts from Peru";
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-    }
+    });
 
   </script>
 
 </body>
+
 </html>
