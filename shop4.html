@@ -3,22 +3,13 @@
 <html lang="es">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Dried | Tayta Inti</title>
 
   <style>
-
-    /* =====================================================
-       FUENTES
-    ===================================================== */
-
+    /* FUENTES */
     @font-face {
       font-family: 'Adelia';
       src: url('fuentes/Adelia.otf') format('opentype');
@@ -28,10 +19,6 @@
       font-family: 'Scriptorial';
       src: url('fuentes/Scriptorial.ttf') format('truetype');
     }
-
-    /* =====================================================
-       GENERAL
-    ===================================================== */
 
     * {
       box-sizing: border-box;
@@ -51,474 +38,244 @@
       overflow-x: hidden;
     }
 
-    /* =====================================================
-       FONDO
-    ===================================================== */
-
+    /* FONDO ANIMADO */
     body::before {
       content: "";
       position: fixed;
       inset: -5%;
       z-index: -5;
-
-      background-image:
-        url('imagenes/driedherbs.png');
-
+      background-image: url('imagenes/driedherbs.png');
       background-size: cover;
       background-position: center;
-
       transform: scale(1.05);
-
-      animation:
-        fondoMovimiento 15s ease-in-out infinite alternate;
+      animation: fondoMovimiento 15s ease-in-out infinite alternate;
     }
 
     @keyframes fondoMovimiento {
-
-      from {
-        transform: scale(1.05);
-      }
-
-      to {
-        transform: scale(1.12);
-      }
-
+      from { transform: scale(1.05); }
+      to { transform: scale(1.12); }
     }
 
-    /* =====================================================
-       CAPA OSCURA
-    ===================================================== */
-
+    /* CAPA OSCURA */
     body::after {
       content: "";
       position: fixed;
       inset: 0;
       z-index: -4;
       pointer-events: none;
-
-      background:
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,.78),
-          rgba(0,0,0,.45),
-          rgba(0,0,0,.82)
-        );
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,.78),
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.82)
+      );
     }
 
-    /* =====================================================
-       CONTENEDOR
-    ===================================================== */
-
+    /* CONTENEDOR */
     .contenedor-principal {
       min-height: 100vh;
-
-      padding:
-        35px 30px 80px;
-
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(255,255,255,.06),
-          transparent 50%
-        );
+      padding: 35px 30px 80px;
+      background: radial-gradient(
+        circle at center,
+        rgba(255,255,255,.06),
+        transparent 50%
+      );
     }
 
-    /* =====================================================
-       ICONOS SUPERIORES
-    ===================================================== */
-
+    /* ICONOS SUPERIORES */
     .top-icons {
       position: fixed;
-
       top: 22px;
       right: 30px;
-
       display: flex;
       gap: 14px;
-
       z-index: 2000;
     }
 
     .top-icons a {
       width: 45px;
       height: 45px;
-
       display: flex;
       align-items: center;
       justify-content: center;
-
-      border:
-        1px solid
-        rgba(255,255,255,.45);
-
+      border: 1px solid rgba(255,255,255,.45);
       border-radius: 50%;
-
-      background:
-        rgba(0,0,0,.25);
-
-      backdrop-filter:
-        blur(6px);
-
-      transition:
-        transform .35s ease,
-        background .35s ease;
+      background: rgba(0,0,0,.25);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 14px rgba(0,0,0,.55);
+      transition: transform .35s ease, background .35s ease;
     }
 
     .top-icons img {
       width: 29px;
       height: 29px;
-
       object-fit: contain;
-
-      filter:
-        brightness(0)
-        invert(1);
+      filter: brightness(0) invert(1);
     }
 
     .top-icons a:hover {
-      transform:
-        translateY(-4px)
-        scale(1.08);
-
-      background:
-        rgba(255,255,255,.16);
+      transform: translateY(-4px) scale(1.08);
+      background: rgba(255,255,255,.16);
     }
 
-    /* =====================================================
-       LOGO
-    ===================================================== */
-
+    /* LOGO */
     .logo2 {
       display: block;
-
       width: 220px;
       max-width: 65%;
-
       height: auto;
-
-      margin:
-        20px auto 15px;
-
-      filter:
-        drop-shadow(
-          0 5px 20px
-          rgba(0,0,0,.5)
-        );
-
-      animation:
-        logoEntrada 1.2s ease forwards;
+      margin: 20px auto 15px;
+      filter: drop-shadow(0 5px 20px rgba(0,0,0,.5));
+      animation: logoEntrada 1.2s ease forwards;
     }
 
     @keyframes logoEntrada {
-
       from {
         opacity: 0;
-        transform:
-          translateY(-25px)
-          scale(.92);
+        transform: translateY(-25px) scale(.92);
       }
-
       to {
         opacity: 1;
-        transform:
-          translateY(0)
-          scale(1);
+        transform: translateY(0) scale(1);
       }
-
     }
 
-    /* =====================================================
-       TÍTULO GENERAL
-    ===================================================== */
-
+    /* TÍTULO */
     .titulo {
       text-align: center;
-
       margin-bottom: 45px;
-
-      animation:
-        aparecer 1s ease .4s both;
+      animation: aparecer 1s ease .4s both;
     }
 
     .titulo h1 {
-      font-family:
-        'Adelia',
-        serif;
-
+      font-family: 'Adelia', serif;
       font-size: 32px;
-
       font-weight: normal;
-
       letter-spacing: 3px;
-
       text-transform: uppercase;
-
-      text-shadow:
-        0 3px 12px
-        rgba(0,0,0,.8);
+      text-shadow: 0 3px 12px rgba(0,0,0,.8);
     }
 
     .titulo-linea {
       width: 70px;
-
       height: 1px;
-
-      margin:
-        15px auto;
-
-      background:
-        rgba(255,255,255,.75);
+      margin: 15px auto;
+      background: rgba(255,255,255,.75);
     }
 
     .titulo p {
-      font-family:
-        'Scriptorial',
-        cursive;
-
+      font-family: 'Scriptorial', cursive;
       font-size: 17px;
-
       letter-spacing: 1.5px;
-
-      color:
-        rgba(255,255,255,.85);
+      color: rgba(255,255,255,.85);
     }
 
     @keyframes aparecer {
-
       from {
         opacity: 0;
-        transform:
-          translateY(15px);
+        transform: translateY(15px);
       }
-
       to {
         opacity: 1;
-        transform:
-          translateY(0);
+        transform: translateY(0);
       }
-
     }
 
-    /* =====================================================
-       PRODUCTOS
-    ===================================================== */
-
+    /* GRID DE PRODUCTOS */
     .productos {
       display: grid;
-
-      grid-template-columns:
-        repeat(3, 1fr);
-
+      grid-template-columns: repeat(3, 1fr);
       gap: 25px;
-
       justify-items: center;
-
       max-width: 1150px;
-
       margin: 0 auto;
     }
 
-    /* =====================================================
-       BOTÓN PRODUCTO
-    ===================================================== */
-
+    /* TARJETAS */
     .product {
       position: relative;
-
       width: 100%;
-
       max-width: 310px;
-
       min-height: 135px;
-
-      padding:
-        30px 25px;
-
+      padding: 30px 25px;
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       text-align: center;
-
-      text-decoration: none;
-
       color: white;
-
       overflow: hidden;
-
-      border:
-        1px solid
-        rgba(255,255,255,.35);
-
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,.35);
       border-radius: 5px;
-
-      background:
-        rgba(0,0,0,.30);
-
-      backdrop-filter:
-        blur(8px);
-
-      box-shadow:
-        0 8px 30px
-        rgba(0,0,0,.30);
-
-      transition:
-        transform .5s ease,
-        box-shadow .5s ease,
-        border-color .5s ease;
-
+      background: rgba(0,0,0,.30);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.30);
+      transition: transform .5s ease, box-shadow .5s ease, border-color .5s ease;
       opacity: 0;
-
-      animation:
-        tarjetaEntrada .8s ease forwards;
+      animation: tarjetaEntrada .8s ease forwards;
     }
 
-    /* =====================================================
-       ANIMACIÓN DE ENTRADA
-    ===================================================== */
-
-    .product:nth-child(1) {
-      animation-delay: .8s;
-    }
-
-    .product:nth-child(2) {
-      animation-delay: .9s;
-    }
-
-    .product:nth-child(3) {
-      animation-delay: 1s;
-    }
-
-    .product:nth-child(4) {
-      animation-delay: 1.1s;
-    }
-
-    .product:nth-child(5) {
-      animation-delay: 1.2s;
-    }
-
-    .product:nth-child(6) {
-      animation-delay: 1.3s;
-    }
+    .product:nth-child(1) { animation-delay: .1s; }
+    .product:nth-child(2) { animation-delay: .2s; }
+    .product:nth-child(3) { animation-delay: .3s; }
+    .product:nth-child(4) { animation-delay: .4s; }
+    .product:nth-child(5) { animation-delay: .5s; }
+    .product:nth-child(6) { animation-delay: .6s; }
 
     @keyframes tarjetaEntrada {
-
       from {
         opacity: 0;
-
-        transform:
-          translateY(30px);
+        transform: translateY(30px);
       }
-
       to {
         opacity: 1;
-
-        transform:
-          translateY(0);
+        transform: translateY(0);
       }
-
     }
 
-    /* =====================================================
-       IMAGEN
-    ===================================================== */
-
+    /* IMAGEN DE TARJETA */
     .product img {
       position: absolute;
-
       inset: 0;
-
       width: 100%;
       height: 100%;
-
       object-fit: cover;
-
       opacity: 0;
-
-      transform:
-        scale(1.15);
-
-      transition:
-        opacity .5s ease,
-        transform .8s ease;
-
+      transform: scale(1.15);
+      transition: opacity .5s ease, transform .8s ease;
       z-index: 1;
     }
 
-    /* =====================================================
-       CAPA OSCURA SOBRE LA IMAGEN
-    ===================================================== */
-
     .product .imagen-overlay {
       position: absolute;
-
       inset: 0;
-
-      background:
-        rgba(0,0,0,.45);
-
+      background: rgba(0,0,0,.48);
       opacity: 0;
-
-      transition:
-        opacity .5s ease;
-
+      transition: opacity .5s ease;
       z-index: 2;
     }
 
-    /* =====================================================
-       NOMBRE EN LAS TARJETAS
-    ===================================================== */
-
     .product h2 {
       position: relative;
-
       z-index: 5;
-
-      font-family:
-        'Adelia',
-        serif;
-
+      font-family: 'Adelia', serif;
       font-size: 18px;
-
       font-weight: normal;
-
       line-height: 1.45;
-
       letter-spacing: 1.2px;
-
-      text-shadow:
-        0 2px 8px
-        rgba(0,0,0,1);
-
-      transition:
-        transform .4s ease,
-        letter-spacing .4s ease;
+      text-shadow: 0 2px 8px rgba(0,0,0,1);
+      transition: transform .4s ease, letter-spacing .4s ease;
     }
 
-    /* =====================================================
-       HOVER
-    ===================================================== */
-
     .product:hover {
-      transform:
-        translateY(-10px)
-        scale(1.025);
-
-      border-color:
-        rgba(255,255,255,.9);
-
-      box-shadow:
-        0 20px 45px
-        rgba(0,0,0,.6);
+      transform: translateY(-10px) scale(1.025);
+      border-color: rgba(255,255,255,.9);
+      box-shadow: 0 20px 45px rgba(0,0,0,.6);
     }
 
     .product:hover img {
       opacity: 1;
-
-      transform:
-        scale(1);
+      transform: scale(1);
     }
 
     .product:hover .imagen-overlay {
@@ -526,71 +283,44 @@
     }
 
     .product:hover h2 {
-      transform:
-        scale(1.04);
-
-      letter-spacing:
-        1.5px;
+      transform: scale(1.04);
+      letter-spacing: 1.5px;
     }
 
-    /* =====================================================
-       EFECTO BRILLO
-    ===================================================== */
-
+    /* BRILLO */
     .product::after {
       content: "";
-
       position: absolute;
-
       top: 0;
       left: -120%;
-
       width: 60%;
       height: 100%;
-
-      background:
-        linear-gradient(
-          90deg,
-          transparent,
-          rgba(255,255,255,.18),
-          transparent
-        );
-
-      transform:
-        skewX(-20deg);
-
-      transition:
-        left .8s ease;
-
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.18),
+        transparent
+      );
+      transform: skewX(-20deg);
+      transition: left .8s ease;
       z-index: 6;
+      pointer-events: none;
     }
 
     .product:hover::after {
       left: 140%;
     }
 
-    /* =====================================================
-       LÍNEA DECORATIVA
-    ===================================================== */
-
+    /* LÍNEA */
     .product .linea {
       position: absolute;
-
       bottom: 12px;
       left: 50%;
-
       width: 0;
       height: 1px;
-
-      transform:
-        translateX(-50%);
-
-      background:
-        white;
-
-      transition:
-        width .4s ease;
-
+      transform: translateX(-50%);
+      background: white;
+      transition: width .4s ease;
       z-index: 7;
     }
 
@@ -598,28 +328,94 @@
       width: 50px;
     }
 
-    /* =====================================================
-       TABLET
-    ===================================================== */
-
-    @media (max-width: 900px) {
-
-      .productos {
-        grid-template-columns:
-          repeat(2, 1fr);
-      }
-
+    /* DETALLE DEL PRODUCTO */
+    .detalle-producto {
+      display: none;
+      max-width: 950px;
+      margin: 0 auto;
+      text-align: center;
+      animation: aparecer .7s ease both;
     }
 
-    /* =====================================================
-       MÓVIL
-    ===================================================== */
+    .detalle-producto.activo {
+      display: block;
+    }
 
+    .detalle-imagen-contenedor {
+      width: 100%;
+      max-width: 520px;
+      height: 400px;
+      margin: 0 auto 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.35);
+      box-shadow: 0 10px 30px rgba(0,0,0,.5);
+      backdrop-filter: blur(5px);
+    }
+
+    .detalle-imagen {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 5px 12px rgba(0,0,0,.5));
+    }
+
+    .detalle-nombre {
+      font-family: 'Scriptorial', cursive;
+      font-size: 30px;
+      font-weight: normal;
+      line-height: 1.5;
+      margin: 15px 0 20px;
+      text-shadow: 0 3px 10px rgba(0,0,0,.8);
+    }
+
+    .detalle-descripcion {
+      max-width: 800px;
+      margin: 0 auto 35px;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.9;
+      letter-spacing: .3px;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 2px 8px rgba(0,0,0,.8);
+    }
+
+    /* BOTÓN VOLVER */
+    .volver-productos {
+      display: inline-block;
+      padding: 13px 28px;
+      margin: 15px auto 35px;
+      font-family: 'Adelia', serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      color: white;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.7);
+      border-radius: 3px;
+      cursor: pointer;
+      transition: .3s ease;
+    }
+
+    .volver-productos:hover {
+      background: rgba(255,255,255,.18);
+      transform: translateY(-3px);
+      box-shadow: 0 7px 18px rgba(0,0,0,.4);
+    }
+
+    /* TABLET */
+    @media (max-width: 900px) {
+      .productos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* MÓVIL */
     @media (max-width: 600px) {
-
       .contenedor-principal {
-        padding:
-          25px 15px 60px;
+        padding: 25px 15px 60px;
       }
 
       .top-icons {
@@ -671,183 +467,328 @@
         font-size: 16px;
       }
 
+      .detalle-imagen-contenedor {
+        height: 290px;
+      }
+
+      .detalle-nombre {
+        font-size: 24px;
+      }
+
+      .detalle-descripcion {
+        font-size: 14px;
+        line-height: 1.8;
+      }
     }
 
-    /* =====================================================
-       ACCESIBILIDAD
-    ===================================================== */
-
+    /* ACCESIBILIDAD */
     @media (prefers-reduced-motion: reduce) {
-
       *,
       *::before,
       *::after {
-
         animation: none !important;
-
         transition: none !important;
-
       }
-
     }
 
   </style>
-
 </head>
 
 <body>
 
-  <!-- =====================================================
-       ICONOS SUPERIORES
-  ===================================================== -->
-
+  <!-- ICONOS SUPERIORES -->
   <div class="top-icons">
 
-    <a href="index.html">
-
-      <img
-        src="imagenes/Home.jpg"
-        alt="Home">
-
+    <a href="index.html" aria-label="Home">
+      <img src="imagenes/Home.jpg" alt="Home">
     </a>
 
-    <a href="formulario.html">
-
-      <img
-        src="imagenes/Carrito.png"
-        alt="Carrito">
-
+    <a href="formulario.html" aria-label="Carrito">
+      <img src="imagenes/Carrito.png" alt="Carrito">
     </a>
 
   </div>
 
-  <!-- =====================================================
-       CONTENIDO
-  ===================================================== -->
-
   <main class="contenedor-principal">
 
     <!-- LOGO -->
-
     <img
       src="imagenes/logo2.png"
       alt="Tayta Inti"
-      class="logo2">
+      class="logo2"
+    >
 
-    <!-- TÍTULO GENERAL -->
-
+    <!-- TÍTULO -->
     <div class="titulo">
 
-      <h1>
-        Dried
-      </h1>
+      <h1 id="tituloPrincipal">Dried</h1>
 
       <div class="titulo-linea"></div>
 
-      <p>
+      <p id="subtituloPrincipal">
         Natural Peruvian dried botanicals
       </p>
 
     </div>
 
-    <!-- PRODUCTOS -->
+    <!-- GRID -->
+    <div class="productos" id="productos"></div>
 
-    <div
-      class="productos"
-      id="productos">
-    </div>
+    <!-- DETALLE -->
+    <section
+      class="detalle-producto"
+      id="detalleProducto"
+      aria-live="polite"
+    >
+
+      <div class="detalle-imagen-contenedor">
+
+        <img
+          src=""
+          alt=""
+          class="detalle-imagen"
+          id="detalleImagen"
+        >
+
+      </div>
+
+      <h2
+        class="detalle-nombre"
+        id="detalleNombre">
+      </h2>
+
+      <p
+        class="detalle-descripcion"
+        id="detalleDescripcion">
+      </p>
+
+      <button
+        type="button"
+        class="volver-productos"
+        id="volverProductos"
+      >
+        ← Back to Dried
+      </button>
+
+    </section>
 
   </main>
 
   <script>
 
+    /* ==========================================
+       PRODUCTOS
+    ========================================== */
+
     const productos = [
 
       {
-        nombre:
-          "Chancapiedra Dried (Phyllanthus niruri)",
+        nombre: "Chancapiedra Dried (Phyllanthus niruri)",
 
-        enlace:
-          "ChancapiedraDried.html"
+        imagen: "imagenes/ChancapiedraDried.jpg",
+
+        descripcion:
+          "Chancapiedra (Phyllanthus niruri) is a tropical botanical traditionally used in South American herbal preparations. Its leaves and stems are carefully dried to preserve their natural botanical characteristics."
       },
 
       {
-        nombre:
-          "Valerian Root Dried (Valeriana officinalis)",
+        nombre: "Valerian Root Dried (Valeriana officinalis)",
 
-        enlace:
-          "ValerianRootDried.html"
+        imagen: "imagenes/ValerianRootDried.jpg",
+
+        descripcion:
+          "Valerian Root (Valeriana officinalis) is a botanical ingredient obtained from the root of the valerian plant. It is traditionally appreciated in herbal preparations and natural botanical collections."
       },
 
       {
-        nombre:
-          "Pink Pepper Seed Dried (Schinus molle)",
+        nombre: "Pink Pepper Seed Dried (Schinus molle)",
 
-        enlace:
-          "PinkPepperSeedDried.html"
+        imagen: "imagenes/PinkPepperSeedDried.jpg",
+
+        descripcion:
+          "Pink Pepper (Schinus molle) comes from a South American tree known for its aromatic pink berries. The dried berries are appreciated for their distinctive appearance and aromatic qualities."
       },
 
       {
-        nombre:
-          "Papaya Seed Dried (Carica papaya)",
+        nombre: "Papaya Seed Dried (Carica papaya)",
 
-        enlace:
-          "PapayaSeedDried.html"
+        imagen: "imagenes/PapayaSeedDried.jpg",
+
+        descripcion:
+          "Papaya Seeds (Carica papaya) are obtained from the tropical papaya fruit. Carefully dried, they retain their characteristic appearance and are used as a botanical raw material in natural product preparations."
       },
 
       {
-        nombre:
-          "Andean Mint Leaf Dried (Minthostachys mollis)",
+        nombre: "Andean Mint Leaf Dried (Minthostachys mollis)",
 
-        enlace:
-          "AndeanMintLeafDried.html"
+        imagen: "imagenes/AndeanMintLeafDried.jpg",
+
+        descripcion:
+          "Andean Mint (Minthostachys mollis), also known as Muña, is an aromatic plant native to the Andes. Its leaves are traditionally appreciated for their fresh mint-like aroma and are commonly used in herbal infusions."
       },
 
       {
-        nombre:
-          "Senna Leaves Dried (Senna alexandrina)",
+        nombre: "Senna Leaves Dried (Senna alexandrina)",
 
-        enlace:
-          "senna.html"
+        imagen: "imagenes/senna.jpg",
+
+        descripcion:
+          "Senna Leaves (Senna alexandrina) are obtained from a botanical plant traditionally used in herbal preparations. The dried leaves are valued as a botanical raw material."
       }
 
     ];
 
-    const contenedor =
-      document.getElementById('productos');
 
-    /* =====================================================
+    /* ==========================================
+       ELEMENTOS HTML
+    ========================================== */
+
+    const contenedorProductos =
+      document.getElementById("productos");
+
+    const detalleProducto =
+      document.getElementById("detalleProducto");
+
+    const detalleImagen =
+      document.getElementById("detalleImagen");
+
+    const detalleNombre =
+      document.getElementById("detalleNombre");
+
+    const detalleDescripcion =
+      document.getElementById("detalleDescripcion");
+
+    const tituloPrincipal =
+      document.getElementById("tituloPrincipal");
+
+    const subtituloPrincipal =
+      document.getElementById("subtituloPrincipal");
+
+    const botonVolver =
+      document.getElementById("volverProductos");
+
+
+    /* ==========================================
        CREAR TARJETAS
-    ===================================================== */
+    ========================================== */
 
-    productos.forEach((p, indice) => {
+    function mostrarProductos() {
 
-      contenedor.innerHTML += `
+      contenedorProductos.innerHTML = "";
 
-        <a
-          href="${p.enlace}"
-          class="product">
+      productos.forEach((producto, indice) => {
 
-          <div
-            class="imagen-overlay">
-          </div>
+        const tarjeta = document.createElement("button");
 
-          <h2>
-            ${p.nombre}
-          </h2>
+        tarjeta.type = "button";
 
-          <div
-            class="linea">
-          </div>
+        tarjeta.className = "product";
 
-        </a>
+        tarjeta.setAttribute(
+          "aria-label",
+          "View " + producto.nombre
+        );
 
-      `;
+        tarjeta.innerHTML = `
 
-    });
+          <img
+            src="${producto.imagen}"
+            alt="${producto.nombre}"
+            loading="lazy"
+          >
+
+          <div class="imagen-overlay"></div>
+
+          <h2>${producto.nombre}</h2>
+
+          <div class="linea"></div>
+
+        `;
+
+        tarjeta.addEventListener("click", () => {
+          abrirDetalle(indice);
+        });
+
+        contenedorProductos.appendChild(tarjeta);
+
+      });
+
+    }
+
+
+    /* ==========================================
+       ABRIR DETALLE
+    ========================================== */
+
+    function abrirDetalle(indice) {
+
+      const producto = productos[indice];
+
+      detalleImagen.src = producto.imagen;
+
+      detalleImagen.alt = producto.nombre;
+
+      detalleNombre.textContent = producto.nombre;
+
+      detalleDescripcion.textContent =
+        producto.descripcion;
+
+      contenedorProductos.style.display = "none";
+
+      detalleProducto.classList.add("activo");
+
+      tituloPrincipal.textContent =
+        "Product Details";
+
+      subtituloPrincipal.textContent =
+        "Discover our natural Peruvian dried botanicals";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ==========================================
+       VOLVER A PRODUCTOS
+    ========================================== */
+
+    function volverAProductos() {
+
+      detalleProducto.classList.remove("activo");
+
+      contenedorProductos.style.display = "grid";
+
+      tituloPrincipal.textContent = "Dried";
+
+      subtituloPrincipal.textContent =
+        "Natural Peruvian dried botanicals";
+
+      detalleImagen.src = "";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    /* ==========================================
+       EVENTOS
+    ========================================== */
+
+    botonVolver.addEventListener(
+      "click",
+      volverAProductos
+    );
+
+    /* INICIAR */
+    mostrarProductos();
 
   </script>
 
 </body>
-
 </html>
