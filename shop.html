@@ -63,7 +63,7 @@
       }
     }
 
-    /* ===== ICONOS SUPERIORES ===== */
+    /* ===== ICONOS CIRCULARES SUPERIORES ===== */
     .iconos-superiores {
       position: fixed;
       top: 20px;
@@ -73,16 +73,31 @@
       z-index: 10;
     }
 
-    .iconos-superiores img {
-      width: 45px;
-      height: 45px;
-      object-fit: contain;
-      cursor: pointer;
-      transition: transform 0.3s;
+    .iconos-superiores a {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.35);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .iconos-superiores img:hover {
+    .iconos-superiores a:hover {
       transform: scale(1.1);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .iconos-superiores img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      cursor: pointer;
     }
 
     /* ===== LOGO ===== */
@@ -379,9 +394,9 @@
         gap: 8px;
       }
 
-      .iconos-superiores img {
-        width: 35px;
-        height: 35px;
+      .iconos-superiores a {
+        width: 38px;
+        height: 38px;
       }
 
       .contenedor-principal {
@@ -449,19 +464,25 @@
 
 <body>
 
-  <!-- ICONOS SUPERIORES -->
+  <!-- ICONOS SUPERIORES CIRCULARES -->
   <div class="iconos-superiores">
-    <a href="index.html">
+
+    <a href="index.html" aria-label="Home">
       <img src="imagenes/Home.jpg" alt="Home">
     </a>
 
-    <a href="formulario.html">
+    <a href="formulario.html" aria-label="Carrito">
       <img src="imagenes/Carrito.png" alt="Carrito">
     </a>
+
   </div>
 
   <!-- LOGO -->
-  <img src="imagenes/logo2.png" alt="Tayta Inti Logo" class="logo2">
+  <img
+    src="imagenes/logo2.png"
+    alt="Tayta Inti Logo"
+    class="logo2"
+  >
 
   <!-- CONTENIDO PRINCIPAL -->
   <main class="contenedor-principal">
@@ -495,7 +516,10 @@
 
         <p id="detalleDescripcion"></p>
 
-        <button class="btn-regresar" onclick="volverProductos()">
+        <button
+          class="btn-regresar"
+          onclick="volverProductos()"
+        >
           ← Back to Extracts
         </button>
 
